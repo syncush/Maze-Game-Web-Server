@@ -13,6 +13,9 @@ namespace Server.Models
         {
             IMazeGenerator iMaze = new MazeGeneratorLib.DFSMazeGenerator();
             Maze result = iMaze.Generate(rows, cols);
+            if (mazes.ContainsKey(name)) {
+                return mazes[name];
+            }
             mazes.Add(name, result);
             result.Name = name;
             return result;

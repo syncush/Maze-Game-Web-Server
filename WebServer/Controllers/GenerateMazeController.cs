@@ -22,11 +22,18 @@ namespace Server.Controllers
 
         // POST: api/GenerateMaze
         [HttpPost]
-        public JObject Post([FromBody]MazeParams value)
+        public IActionResult Post(MazeParams value)
+        {
+            Maze maze = this.gmModel.GenerateMaze(value.Name, value.Rows, value.Cols);
+            //JObject jobj = JObject.Parse(maze.ToJSON());
+            return new ObjectResult(maze);
+        }
+        [HttpGet]
+        public IActionResult Get(MazeParams value)
         {
             Maze maze = this.gmModel.GenerateMaze(value.Name, value.Rows, value.Cols);
             JObject jobj = JObject.Parse(maze.ToJSON());
-            return jobj;
+            return Ok(jobj);
         }
 
 
