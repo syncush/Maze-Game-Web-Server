@@ -46,7 +46,7 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Source\Repos\Ex2AP2\SearchAlgorithmsLib\SearchAlgorithmsLib.csproj" />
+    <ProjectReference Include="..\SearchAlgorithmsLib\SearchAlgorithmsLib.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MazeGeneratorLib">
