@@ -6,7 +6,33 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Content Include="wwwroot\HomePage.html" />
+    <Content Include="wwwroot\images\control.jpg" />
+    <Content Include="wwwroot\images\gear.png" />
+    <Content Include="wwwroot\images\git.png" />
+    <Content Include="wwwroot\images\linkdn.png" />
+    <Content Include="wwwroot\images\Logo.png" />
+    <Content Include="wwwroot\images\maze.png" />
+    <Content Include="wwwroot\images\mazeGame.png" />
+    <Content Include="wwwroot\js\calendarview.js" />
+    <Content Include="wwwroot\js\css\calendarview.css" />
+    <Content Include="wwwroot\js\css\styles\form.css" />
+    <Content Include="wwwroot\js\css\styles\nova.css" />
+    <Content Include="wwwroot\js\HomePage.js" />
+    <Content Include="wwwroot\js\jotform.js" />
+    <Content Include="wwwroot\js\location.js" />
+    <Content Include="wwwroot\js\Plugin.MazeBoard.js" />
+    <Content Include="wwwroot\js\protoplus-ui-form.js" />
+    <Content Include="wwwroot\js\protoplus.js" />
+    <Content Include="wwwroot\js\prototype.js" />
+    <Content Include="wwwroot\js\Singleplayer.js" />
+    <Content Include="wwwroot\js\vendor\json2.js" />
+    <Content Include="wwwroot\Login.html" />
+    <Content Include="wwwroot\index.html" />
+    <Content Include="wwwroot\MultiPlayer.html" />
+    <Content Include="wwwroot\Register.html" />
+    <Content Include="wwwroot\Settings.html" />
+    <Content Include="wwwroot\SinglePlayer.html" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
