@@ -1,8 +1,4 @@
 ﻿(function ($) {
-    $.fn.greenify = function () {
-        this.css("color", "green");
-        return this;
-    };
     $.fn.drawMaze = function (maze) {
         var myCanvas = document.getElementById("mazeCanvas");
         var context = mazeCanvas.getContext("2d");
