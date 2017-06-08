@@ -6,6 +6,7 @@ using SearchAlgorithmsLib;
 
 namespace Server.Controllers
 {
+    [Route("api/Solve")]
     public class SolveController : Controller
     {
         private SolveMazeModel smModel;

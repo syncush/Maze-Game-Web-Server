@@ -7,6 +7,7 @@
     var rows;
     var cols;
     var yolo;
+    var currentLocationOnArray = 0;
     var isAbleToMove = false;
 
     var cellWidth;
@@ -20,15 +21,6 @@
     var playerImg = document.getElementById("playerImage");
     var endGameImg = document.getElementById("endImage");
 
-    function test() {
-        document.getElementById("playButt").disabled = true;
-        document.getElementById("solveButt").disabled = true;
-        document.getElementById("restartButt").disabled = true;
-        /// $('#playButt').prop('disabled', true);
-        // $('#solveButt').prop('disabled', true);
-        //$('#restartButt').prop('disabled', true);
-
-    };
     $("#myNavbar").load("HomePage.html");
 
     $("#playForm").on("submit", function (e) {
@@ -76,6 +68,7 @@
             currY = yolo["Start"]["Col"];
             canvasFX.drawImage(playerImg, currY * cellWidth, currX * cellHeight, cellWidth, cellHeight);
             isAbleToMove = true;
+            currentLocationOnArray = 0;
             canvasFX.drawImage(endGameImg, endYaxis * cellWidth, endXaxis * cellHeight, cellWidth, cellHeight);
 
         });
@@ -156,13 +149,13 @@
                 $('#playButt').prop('disabled', true);
                 $('#solveButt').prop('disabled', true);
                 $('#restartButt').prop('disabled', true);
+                canvasFX.fillStyle = "#FFFFFF";
                 canvasFX.fillRect(cellWidth * currY, cellHeight * currX, cellWidth, cellHeight);
                 currX = yolo["Start"]["Row"];
                 currY = yolo["Start"]["Col"];
                 canvasFX.drawImage(playerImg, currY * cellWidth, currX * cellHeight, cellWidth, cellHeight);
                 canvasFX.drawImage(endGameImg, endYaxis * cellWidth, endXaxis * cellHeight, cellWidth, cellHeight);
                 var refreshIntervalId = setInterval(function () {
-                    var currentLocationOnArray = 0;
                     var oldX = currX;
                     var oldY = currY;
                     switch (data.Solution[currentLocationOnArray]) {
@@ -195,7 +188,7 @@
                     }
                     canvasFX.fillStyle = "#FFFFFF";
                     canvasFX.fillRect(cellWidth * oldY, cellHeight * oldX, cellWidth, cellHeight);
-                    canvasFX.drawImage(endGameImg, currY * cellWidth, currX * cellHeight, cellWidth, cellHeight);
+                    canvasFX.drawImage(playerImg, currY * cellWidth, currX * cellHeight, cellWidth, cellHeight);
                     if (currX == endXaxis && currY == endYaxis) {
                         clearInterval(refreshIntervalId);
                         alert("Congratz!");
@@ -204,6 +197,7 @@
                         $('#solveButt').prop('disabled', false);
                         $('#restartButt').prop('disabled', false);
                     }
+                    currentLocationOnArray = currentLocationOnArray + 1;
                 }, 500);
             },
             error: function (xhr, textStatus, errorThrown) {
