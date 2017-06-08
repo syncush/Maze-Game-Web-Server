@@ -19,6 +19,7 @@
 
     var playerImg = document.getElementById("playerImage");
     var endGameImg = document.getElementById("endImage");
+
     function test() {
         document.getElementById("playButt").disabled = true;
         document.getElementById("solveButt").disabled = true;
@@ -124,11 +125,13 @@
             }
         }
     });
+
     function OnValueInitStartUp() {
         $('input[name="Cols"]').val(localStorage.getItem('Colsz'));
         $('input[name="Rows"]').val(localStorage.getItem('Rowz'));
         $("#AlgoritmComboBox").val((localStorage.getItem('AlgoSelected')));
     }
+    
     $("#solveForm").on("submit", function (e) {
         e.preventDefault();
         var algoNum = 1;
@@ -137,14 +140,15 @@
         } else {
             algoNum = 0;
         }
-        var mazeData = {
-            Name: data.Name,
+        var solveData = {
+            Name: yolo.Name,
             AlgoSelector: algoNum
         };
+
         $.ajax({
             type: "GET",
-            url: "/api/GenerateMaze",
-            data: mazeData,
+            url: "/api/Solve",
+            data: solveData,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
@@ -163,25 +167,31 @@
                     var oldY = currY;
                     switch (data.Solution[currentLocationOnArray]) {
                         //left
-                        case '0': {
-                            currY = currY - 1;
+                        case '0':
+                            {
+                                currY = currY - 1;
 
-                        } break;
+                            }
+                            break;
                         //right
-                        case '1': {
-                            currY = currY + 1;
-                        }
+                        case '1':
+                            {
+                                currY = currY + 1;
+                            }
                             break;
                         //up
-                        case '2': {
-                            currX = currX - 1;
-                        } break;
+                        case '2':
+                            {
+                                currX = currX - 1;
+                            }
+                            break;
                         //down
-                        case '3': {
-                            currX = currX + 1;
+                        case '3':
+                            {
+                                currX = currX + 1;
 
-                        } break;
-
+                            }
+                            break;
                     }
                     canvasFX.fillStyle = "#FFFFFF";
                     canvasFX.fillRect(cellWidth * oldY, cellHeight * oldX, cellWidth, cellHeight);
@@ -195,13 +205,11 @@
                         $('#restartButt').prop('disabled', false);
                     }
                 }, 500);
-
-
             },
             error: function (xhr, textStatus, errorThrown) {
 
                 return false;
             }
         });
-    }
+    });
 });

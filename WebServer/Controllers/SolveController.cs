@@ -13,8 +13,8 @@ namespace Server.Controllers
         {
             this.smModel = new SolveMazeModel();
         }
-        [HttpPost]
-        public JObject Post([FromBody]SolveParams value)
+        [HttpGet]
+        public IActionResult Get(SolveParams value)
         {
             Algorithm algo = Algorithm.BFS;
             if(value.AlgoSelector == 1)
@@ -30,7 +30,7 @@ namespace Server.Controllers
             jobj["Name"] = value.Name;
             jobj["Solution"] = directions.ToString();
             jobj["NodesEvaluated"] = sol.EvaluatedNodes;
-            return jobj;
+            return Ok(jobj);
         }
     }
 }
