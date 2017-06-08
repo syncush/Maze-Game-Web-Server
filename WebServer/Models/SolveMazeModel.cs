@@ -7,9 +7,18 @@ using MazeLib;
 
 namespace Server.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public enum Algorithm {DFS,BFS};
+    /// <summary>
+    /// 
+    /// </summary>
     public class SolveMazeModel
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SolveMazeModel"/> class.
+        /// </summary>
         public SolveMazeModel()
         {
 

@@ -13,7 +13,6 @@
     var cellWidth;
     var cellHeight;
 
-
     var cannnn = document.getElementById("mazeCanvas");
     var canvasFX = cannnn.getContext("2d");
     canvasFX.fillStyle = "#FFFFFF";
@@ -22,6 +21,8 @@
     var endGameImg = document.getElementById("endImage");
 
     $("#myNavbar").load("HomePage.html");
+    $("#playForm input[name = 'Rows']").val(localStorage.getItem("Rowz"));
+    $("#playForm input[name= 'Cols']").val(localStorage.getItem("Colsz"));
 
     $("#playForm").on("submit", function (e) {
         e.preventDefault();
@@ -120,9 +121,9 @@
     });
 
     function OnValueInitStartUp() {
-        $('input[name="Cols"]').val(localStorage.getItem('Colsz'));
-        $('input[name="Rows"]').val(localStorage.getItem('Rowz'));
-        $("#AlgoritmComboBox").val((localStorage.getItem('AlgoSelected')));
+        $('input[name="Cols"]').val(localStorage.getItem("Colsz"));
+        $('input[name="Rows"]').val(localStorage.getItem("Rowz"));
+        //$("#AlgoritmComboBox").val((localStorage.getItem("AlgoSelected")));
     }
     
     $("#solveForm").on("submit", function (e) {

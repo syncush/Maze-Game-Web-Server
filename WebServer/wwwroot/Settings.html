@@ -2,6 +2,7 @@
 <html>
 <head>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="js/Settings.js"></script>
     <title>Settings</title>
 </head>
 <body>
@@ -9,9 +10,7 @@
 
     </div>
 <script>
-    $(function() {
-        $("#myNavbar").load("HomePage.html");
-    });
+
 </script>
 <center>
 <div>
@@ -19,12 +18,12 @@
     <br />
     <br />
     <br />
-    <form>
+    <form id="settForm">
         <div>
             <label>
                 <b>Rows</b>
             </label>
-            <input type="text" placeholder="Enter Rows" name="rowVal" required>
+            <input type="text" id="Rows" placeholder="Enter Rows" name="rowVal" required>
             <br/>
             <br/>
         </div>
@@ -32,7 +31,7 @@
             <label>
                 <b>Cols</b>
             </label>
-            <input type="text" placeholder="Enter Cols" name="colVal" required>
+            <input type="text" id="Cols" placeholder="Enter Cols" name="colVal" required>
             <br/>
             <br/>
         </div>

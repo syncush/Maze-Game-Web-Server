@@ -7,11 +7,15 @@
 <meta property="og:description" content="Please click the link to complete this form.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <meta name="HandheldFriendly" content="true" />
-<title>JotForm</title>
+<title>Register</title>
 <link href="https://cdn.jotfor.ms/static/formCss.css?3.3.524" rel="stylesheet" type="text/css" />
 <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/nova.css?3.3.524" />
 <link type="text/css" media="print" rel="stylesheet" href="https://cdn.jotfor.ms/css/printForm.css?3.3.524" />
 <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/themes/CSS/566a91c2977cdfcd478b4567.css?"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/Sha1Encrypt.js"></script>
+<script src="js/Register.js"></script>
+
 <style type="text/css">
     .form-label-left{
         width:150px !important;
@@ -683,7 +687,7 @@ li[data-type="control_image"] img {
         $("#myNavbar").load("HomePage.html");
     });
 </script>
-<form class="jotform-form" action="https://submit.jotform.me/submit/71493775484470/" method="post" name="form_71493775484470" id="71493775484470" accept-charset="utf-8">
+<form class="jotform-form" action="https://submit.jotform.me/submit/71493775484470/" id="registForm" name="form_71493775484470" accept-charset="utf-8">
     <input type="hidden" name="formID" value="71493775484470"/>
     <div class="form-all">
         <ul class="form-section page-section">
@@ -737,7 +741,7 @@ li[data-type="control_image"] img {
                 <label class="form-label form-label-left form-label-auto" id="label_11" for="input_11"> Password </label>
                 <div id="cid_11" class="form-input jf-required">
                     <span class="form-sub-label-container" style="vertical-align: top;">
-                        <input type="text" id="input_11" name="q11_password" data-type="input-textbox" class="form-textbox" size="20" value="" data-component="textbox"/>
+                        <input type="Password" id="input_11" name="q11_password" data-type="input-textbox" class="form-textbox" size="20" value="" data-component="textbox"/>
                         <label class="form-sub-label" for="input_11" style="min-height: 13px;"> enter password </label>
                     </span>
                 </div>
@@ -746,7 +750,7 @@ li[data-type="control_image"] img {
                 <label class="form-label form-label-left form-label-auto" id="label_12" for="input_12"> Confirm Password </label>
                 <div id="cid_12" class="form-input jf-required">
                     <span class="form-sub-label-container" style="vertical-align: top;">
-                        <input type="text" id="input_12" name="q12_confirmPassword" data-type="input-textbox" class="form-textbox" size="20" value="" data-component="textbox"/>
+                        <input type="Password" id="input_12" name="q12_confirmPassword" data-type="input-textbox" class="form-textbox" size="20" value="" data-component="textbox"/>
                         <label class="form-sub-label" for="input_12" style="min-height: 13px;"> Please confirm password </label>
                     </span>
                 </div>
@@ -772,9 +776,6 @@ li[data-type="control_image"] img {
             </li>
         </ul>
     </div>
-    <script>
-        JotForm.showJotFormPowered = "old_footer";
-    </script>
     <input type="hidden" id="simple_spc" name="simple_spc" value="71493775484470"/>
     <script type="text/javascript">
         document.getElementById("si" + "mple" + "_spc").value = "71493775484470-71493775484470";
