@@ -28,11 +28,10 @@ namespace WebServer.Controllers
         /// </summary>
         /// <param name="user">The user.</param>
         /// <returns></returns>
-        [HttpPost("Register")]
+        [HttpGet("Register")]
         public IActionResult Register(NewUser user) {
-           
             UserModel.users.Add(new Tuple<string, string, string>(user.UserName, user.Password, user.Email));
-            return Ok();
+            return Ok("{}");
         }
         /// <summary>
         /// Logins the specified user.

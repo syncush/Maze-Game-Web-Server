@@ -10,19 +10,20 @@
         var password = $.sha1($("#input_11").val());
         var verifyPassword = $.sha1($("#input_12").val());
         if (password === verifyPassword) {
-            var mazeData = {
-                Name: name,
+            var userLoginJson = {
+                UserName: name,
                 Email: email,
                 Password: password
             };
             $.ajax({
-                type: "POST",
+                type: "GET",
                 url: "/api/User/Register",
-                data: mazeData,
+                data: userLoginJson,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data) {
-                    alert("Welcome! " + name);
+                    alert("Welcome! " + name  + "\n Page will now redirect!");
+                    $(location).attr("href", "index.html");
 
                 },
                 error: function(xhr, textStatus, errorThrown) {

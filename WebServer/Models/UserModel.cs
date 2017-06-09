@@ -40,8 +40,7 @@ namespace WebServer.Models
             foreach (Tuple<string, string, string> tup in users) {
                 if (tup.Item1 == user.UserName && tup.Item2 == user.Password) {
                     return true;
-                }
-                
+                }   
             }
             return false;
         }
