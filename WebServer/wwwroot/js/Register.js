@@ -17,7 +17,7 @@
             };
             $.ajax({
                 type: "POST",
-                url: "/api/User",
+                url: "/api/User/Register",
                 data: mazeData,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

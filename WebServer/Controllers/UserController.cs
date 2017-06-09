@@ -8,20 +8,37 @@ using WebServer.Models;
 
 namespace WebServer.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
     [Route("api/User")]
     public class UserController : Controller {
         
         private UserModel userModel;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UserController"/> class.
+        /// </summary>
         public UserController() {
             this.userModel = new UserModel();
         }
 
+        /// <summary>
+        /// Registers the specified user.
+        /// </summary>
+        /// <param name="user">The user.</param>
+        /// <returns></returns>
         [HttpPost("Register")]
         public IActionResult Register(NewUser user) {
            
             UserModel.users.Add(new Tuple<string, string, string>(user.UserName, user.Password, user.Email));
             return Ok();
         }
+        /// <summary>
+        /// Logins the specified user.
+        /// </summary>
+        /// <param name="user">The user.</param>
+        /// <returns></returns>
         [HttpPost("Login")]
         public IActionResult Login(UserLoginData user)
         {
