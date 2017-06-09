@@ -7,8 +7,8 @@
         e.preventDefault();
         var name = $("#input_1").val();
         var email = $("#input_2").val();
-        var password = this.sha1($("#input_11").val());
-        var verifyPassword = $("#input_12").val();
+        var password = $.sha1($("#input_11").val());
+        var verifyPassword = $.sha1($("#input_12").val());
         if (password === verifyPassword) {
             var mazeData = {
                 Name: name,
@@ -31,7 +31,7 @@
                 }
             });
         } else {
-            
+            alert("Bad arguments, password does not match!");
         }
 
     });
