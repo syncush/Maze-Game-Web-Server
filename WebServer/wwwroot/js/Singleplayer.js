@@ -120,12 +120,17 @@
         }
     });
 
-    function OnValueInitStartUp() {
+    function onValueInitStartUp() {
         $('input[name="Cols"]').val(localStorage.getItem("Colsz"));
         $('input[name="Rows"]').val(localStorage.getItem("Rowz"));
-        //$("#AlgoritmComboBox").val((localStorage.getItem("AlgoSelected")));
-    }
-    
+        var algoVal = "BFS";
+        if (localStorage.getItem("AlgoSelected") == "1") {
+            algoVal = "DFS";
+        }
+        $("#AlgoSelector").val(algoVal);
+    };
+
+    onValueInitStartUp();
     $("#solveForm").on("submit", function (e) {
         e.preventDefault();
         var algoNum = 1;

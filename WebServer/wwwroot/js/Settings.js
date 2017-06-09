@@ -3,6 +3,11 @@
         $("#myNavbar").load("HomePage.html");
         $("#Rows").val(localStorage.getItem("Rowz"));
         $("#Cols").val(localStorage.getItem("Colsz"));
+        var algoVal = "BFS";
+        if (localStorage.getItem("AlgoSelected") == "1") {
+            algoVal = "DFS";
+        }
+        $("#AlgoSelector").val(algoVal);
     });
     
     $("#settForm").on("submit", function(e) {
@@ -17,7 +22,7 @@
         }
         localStorage.setItem("Rowz", valueRows);
         localStorage.setItem("Colsz", valueCols);
-        //localStorage.setItem("AlgoSelected", imgData);
+        localStorage.setItem("AlgoSelected", algoSelected);
     });
 
 });

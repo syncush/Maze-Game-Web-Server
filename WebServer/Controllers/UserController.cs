@@ -38,7 +38,7 @@ namespace WebServer.Controllers
         /// </summary>
         /// <param name="user">The user.</param>
         /// <returns></returns>
-        [HttpPost("Login")]
+        [HttpGet("Login")]
         public IActionResult Login(UserLoginData user)
         {
             if (this.userModel.Login(user)) {
