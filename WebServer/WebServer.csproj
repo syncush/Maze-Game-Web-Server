@@ -14,19 +14,13 @@
     <Content Include="wwwroot\images\Logo.png" />
     <Content Include="wwwroot\images\maze.png" />
     <Content Include="wwwroot\images\mazeGame.png" />
-    <Content Include="wwwroot\index.js" />
     <Content Include="wwwroot\js\calendarview.js" />
     <Content Include="wwwroot\js\css\calendarview.css" />
-    <Content Include="wwwroot\js\css\form.css" />
-    <Content Include="wwwroot\js\css\nova.css" />
-    <Content Include="wwwroot\js\css\styles\form-submit-button-simple_green.css" />
     <Content Include="wwwroot\js\css\styles\form.css" />
     <Content Include="wwwroot\js\css\styles\nova.css" />
     <Content Include="wwwroot\js\HomePage.js" />
-    <Content Include="wwwroot\js\index.js" />
     <Content Include="wwwroot\js\jotform.js" />
     <Content Include="wwwroot\js\location.js" />
-    <Content Include="wwwroot\js\Login.js" />
     <Content Include="wwwroot\js\Plugin.MazeBoard.js" />
     <Content Include="wwwroot\js\protoplus-ui-form.js" />
     <Content Include="wwwroot\js\protoplus.js" />
@@ -35,7 +29,6 @@
     <Content Include="wwwroot\js\Settings.js" />
     <Content Include="wwwroot\js\Sha1Encrypt.js" />
     <Content Include="wwwroot\js\Singleplayer.js" />
-    <Content Include="wwwroot\js\vendor\index.js" />
     <Content Include="wwwroot\js\vendor\json2.js" />
     <Content Include="wwwroot\Login.html" />
     <Content Include="wwwroot\index.html" />
