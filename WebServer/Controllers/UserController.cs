@@ -30,24 +30,28 @@ namespace WebServer.Controllers
         /// <returns></returns>
         [HttpGet("Register")]
         public IActionResult Register(NewUser user) {
-            UserModel.users.Add(new Tuple<string, string, string>(user.UserName, user.Password, user.Email));
-            return Ok("{}");
+            if (this.userModel.Register(user)) {
+                return Ok("{}");
+            } else
+            {
+                return BadRequest("{}");
+            }
+                
         }
         /// <summary>
         /// Logins the specified user.
         /// </summary>
         /// <param name="user">The user.</param>
         /// <returns></returns>
-        [HttpPost("Login")]
+        [HttpGet("Login")]
         public IActionResult Login(UserLoginData user)
         {
             if (this.userModel.Login(user)) {
-                return Ok();
+                return Ok("{}");
             }
             else {
-                return BadRequest();
+                return BadRequest("{}");
             }
-            
         }
     }
 }
