@@ -16,36 +16,59 @@ namespace WebServer.Models
         /// <summary>
         /// The users
         /// </summary>
-        public static List<Tuple<string, string, string>> users = new List<Tuple<string, string, string>>();
         private static DataTable dataTable;
+        private static Boolean isInit = false;
+        private static DataSet ds;
+        private static OleDbCommand dCommand;
+        private static OleDbConnection con;
+        private static OleDbDataAdapter adapter;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UserModel"/> class.
         /// </summary>
         public UserModel() {
-            try
+            if(!isInit)
             {
-                OleDbConnection con = new OleDbConnection(@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = C:\Users\sync\Desktop\WebServer\WebServer\MazeGameDB.mdb");
-                OleDbCommand dCommand = new OleDbCommand("Select * from Users", con);
-                OleDbDataAdapter adapter = new OleDbDataAdapter(dCommand);
-                dataTable = new DataTable("Users");
-                adapter.Fill(dataTable);
-                con.Close();
-            } catch(Exception e)
-            {
+                try
+                {
+                    ds = new DataSet();
+                    dataTable = new DataTable("Users");
+
+                    con = new OleDbConnection(@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = C:\Users\sync\Desktop\WebServer\WebServer\MazeGameDB.mdb");
+                    dCommand = new OleDbCommand("Select * from Users", con);
+                    adapter = new OleDbDataAdapter(dCommand);
+
+                    adapter.Fill(dataTable);
+                    ds.Tables.Add(dataTable);
+                    isInit = true;
+                    // con.Close();
+                }
+                catch (Exception e)
+                {
+
+                }
 
             }
-           
-
         }
 
         /// <summary>
         /// Registers the specified user.
         /// </summary>
         /// <param name="user">The user.</param>
-        public void Register(NewUser user) {
-            
-            users.Add(new Tuple<string, string, string>(user.UserName, user.Password, user.Email));
+        public Boolean Register(NewUser user) {
+            if(Exist(user.UserName)) {
+                return false;
+            } else {
+                DataRow newRow = dataTable.NewRow();
+                newRow["Username"] = user.UserName;
+                newRow["Password"] = user.Password;
+                newRow["Email"] = user.Email;
+                newRow["Wins"] = 0;
+                newRow["Loses"] = 0;
+                dataTable.Rows.Add(newRow);
+                adapter.Update(ds, dataTable.TableName);
+                return true;
+            }
         }
 
         /// <summary>
@@ -54,10 +77,23 @@ namespace WebServer.Models
         /// <param name="user">The user.</param>
         /// <returns></returns>
         public Boolean Login(UserLoginData user) {
-            foreach (Tuple<string, string, string> tup in users) {
-                if (tup.Item1 == user.UserName && tup.Item2 == user.Password) {
+            foreach(DataRow dr in dataTable.Rows)
+            {
+                if(dr["Username"].ToString() == user.UserName && dr["Password"].ToString() == user.Password)
+                {
                     return true;
-                }   
+                }
+            }
+            return false;
+        }
+        private Boolean Exist(string userName)
+        {
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                if (dr["Username"].ToString() == userName)
+                {
+                    return true;
+                }
             }
             return false;
         }

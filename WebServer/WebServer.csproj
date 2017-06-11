@@ -21,6 +21,7 @@
     <Content Include="wwwroot\js\HomePage.js" />
     <Content Include="wwwroot\js\jotform.js" />
     <Content Include="wwwroot\js\location.js" />
+    <Content Include="wwwroot\js\Login.js" />
     <Content Include="wwwroot\js\Plugin.MazeBoard.js" />
     <Content Include="wwwroot\js\protoplus-ui-form.js" />
     <Content Include="wwwroot\js\protoplus.js" />
