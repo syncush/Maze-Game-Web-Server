@@ -46,6 +46,7 @@ namespace WebServer.Models
         public void Register(NewUser user) {
             
             users.Add(new Tuple<string, string, string>(user.UserName, user.Password, user.Email));
+
         }
 
         /// <summary>
