@@ -1,130 +1,125 @@
 ﻿<!DOCTYPE html>
 <html>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<style>
-    form {
-        border: 3px solid #f1f1f1;
-    }
+<head>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="js/Sha1Encrypt.js"></script>
+    <script src="js/Login.js"></script>
+    <style>
+        form {
+            border: 3px solid #f1f1f1;
+        }
 
-    input[type=text], input[type=password] {
-        padding: 8px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-    }
+        input[type=text], input[type=password] {
+            padding: 8px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
 
-    button {
-        font-weight: bold;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        cursor: pointer;
-        width: auto;
-    }
+        button {
+            font-weight: bold;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: auto;
+        }
+
+            button:hover {
+                opacity: 0.8;
+            }
+
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #dedfe0;
+        }
+
+        .loginbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #dedfe0;
+        }
+
+        .imgcontainer {
+            text-align: left;
+            padding-left: 80px;
+        }
+
+        img.avatar {
+            width: 8%;
+            border-radius: auto;
+        }
+
+        label {
+            padding-left: 80px;
+            padding-right: 10px;
+        }
 
         button:hover {
             opacity: 0.8;
         }
 
-    .cancelbtn {
-        width: auto;
-        padding: 10px 18px;
-        background-color: #dedfe0;
-    }
-
-    .loginbtn {
-        width: auto;
-        padding: 10px 18px;
-        background-color: #dedfe0;
-    }
-
-    .imgcontainer {
-        text-align: left;
-        padding-left: 80px;
-    }
-
-    img.avatar {
-        width: 8%;
-        border-radius: auto;
-    }
-
-    label {
-        padding-left: 80px;
-        padding-right: 10px;
-    }
-
-    button:hover {
-        opacity: 0.8;
-    }
-
-    .container {
-        padding: 5px;
-    }
-
-
-    span.psw {
-        float: right;
-        padding-top: 16px;
-    }
-
-    /* Change styles for span and cancel button on extra small screens */
-
-    @media screen and (max-width: 300px) {
-        span.psw {
-            display: block;
-            float: none;
+        .container {
+            padding: 5px;
         }
-    }
 
-    body {
-        margin: 0;
-    }
-</style>
+
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+        }
+
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
 <body>
-
-    <div id="myNavbar">
-
+    <div id="myNavBar">
     </div>
-    <script>
-        $(function () {
-            $("#myNavbar").load("HomePage.html");
-        });
-    </script>
-
     <div style="padding-left: 100px; padding-top: 50px">
         <h2 style="font-size: 30px">Login Form</h2>
     </div>
     <div style="padding-left: 100px">
         <h2 style="font-size: 25px; font-weight: initial">Use a local account to log in</h2>
     </div>
-    <form>
+    <form id="loginForm">
         <div class="container">
             <label>
                 <b>Username</b>
             </label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
+            <input type="text" id="userNameInput" placeholder="Enter Username" name="uname" required>
         </div>
 
         <div class="container">
             <label>
                 <b>Password</b>
             </label>
-            <input type="text" placeholder="Enter Password" name="psw" required>
+            <input type="password" id="passwordInput"  placeholder="Enter Password" name="psw" required>
         </div>
 
         <div class="container">
             <label></label>
             <button type="submit" class="loginbtn">Login</button>
             <label></label>
-            <button type="button" class="cancelbtn">Cancel</button>
+            <button type="reset" class="cancelbtn">Reset</button>
         </div>
         <div class="container">
             <label></label>
             <a style="font-size: 20px" href="Register.html">Don't Have A User? Register Now!</a>
         </div>
-
     </form>
 </body>
 </html>
