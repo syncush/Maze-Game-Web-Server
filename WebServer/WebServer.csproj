@@ -34,7 +34,6 @@
     <Content Include="wwwroot\Login.html" />
     <Content Include="wwwroot\index.html" />
     <Content Include="wwwroot\MultiPlayer.html" />
-    <Content Include="wwwroot\Ranking.html" />
     <Content Include="wwwroot\RankTable.html" />
     <Content Include="wwwroot\Register.html" />
     <Content Include="wwwroot\Settings.html" />
