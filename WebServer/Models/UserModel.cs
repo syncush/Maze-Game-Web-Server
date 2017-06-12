@@ -22,7 +22,6 @@ namespace WebServer.Models
         private static OleDbCommand dCommand;
         private static OleDbConnection con;
         private static OleDbDataAdapter adapter;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="UserModel"/> class.
         /// </summary>
@@ -79,7 +78,8 @@ namespace WebServer.Models
         public Boolean Login(UserLoginData user) {
             foreach(DataRow dr in dataTable.Rows)
             {
-                if(dr["Username"].ToString() == user.UserName && dr["Password"].ToString() == user.Password)
+                if(dr["Username"].ToString() == user.UserName &&
+                    dr["Password"].ToString() == user.Password)
                 {
                     return true;
                 }
