@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using MazeLib;
 using MazeGeneratorLib;
-namespace Server.Models
+
+namespace MazeWebServer.Models
 {
     public class GenerateMazeModel
     {

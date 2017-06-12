@@ -1,18 +1,18 @@
-﻿using Server.Entitys;
+﻿using MazeWebServer.Entitys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using MazeLib;
 using System.Net.Http;
-using Server.Models;
+using MazeWebServer.Models;
 using Newtonsoft.Json.Linq;
-using Microsoft.AspNetCore.Mvc;
+using System.Web.Http;
 
-namespace Server.Controllers
+namespace MazeWebServer.Controllers
 {
     [Route("api/GenerateMaze")]
-    public class GenerateMazeController : Controller
+    public class GenerateMazeController : ApiController
     {
         private GenerateMazeModel gmModel;
         public GenerateMazeController()
@@ -22,14 +22,14 @@ namespace Server.Controllers
 
         // POST: api/GenerateMaze
         [HttpPost]
-        public IActionResult Post(MazeParams value)
+        public IHttpActionResult Post(MazeParams value)
         {
             Maze maze = this.gmModel.GenerateMaze(value.Name, value.Rows, value.Cols);
             //JObject jobj = JObject.Parse(maze.ToJSON());
-            return new ObjectResult(maze);
+            return new (maze);
         }
         [HttpGet]
-        public IActionResult Get(MazeParams value)
+        public IHttpActionResult Get(MazeParams value)
         {
             Maze maze = this.gmModel.GenerateMaze(value.Name, value.Rows, value.Cols);
             JObject jobj = JObject.Parse(maze.ToJSON());

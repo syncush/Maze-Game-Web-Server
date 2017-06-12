@@ -1,13 +1,13 @@
-﻿using Server.Entitys;
-using Server.Models;
+﻿using MazeWebServer.Entitys;
+using MazeWebServer.Models;
 using Newtonsoft.Json.Linq;
-using Microsoft.AspNetCore.Mvc;
 using SearchAlgorithmsLib;
+using System.Web.Http;
 
-namespace Server.Controllers
+namespace MazeWebServer.Controllers
 {
     [Route("api/Solve")]
-    public class SolveController : Controller
+    public class SolveController : ApiController
     {
         private SolveMazeModel smModel;
         public SolveController()
@@ -15,7 +15,7 @@ namespace Server.Controllers
             this.smModel = new SolveMazeModel();
         }
         [HttpGet]
-        public IActionResult Get(SolveParams value)
+        public IHttpActionResult Get(SolveParams value)
         {
             Algorithm algo = Algorithm.BFS;
             if(value.AlgoSelector == 1)

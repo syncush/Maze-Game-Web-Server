@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using WebServer.Entitys;
-using WebServer.Models;
+using MazeWebServer.Entitys;
+using MazeWebServer.Models;
+using System.Web.Http;
 
-namespace WebServer.Controllers
+namespace MazeWebServer.Controllers
 {
     /// <summary>
     /// 
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
     [Route("api/User")]
-    public class UserController : Controller {
+    public class UserController : ApiController {
         
         private UserModel userModel;
         /// <summary>
@@ -44,7 +44,7 @@ namespace WebServer.Controllers
         /// <param name="user">The user.</param>
         /// <returns></returns>
         [HttpGet("Login")]
-        public IActionResult Login(UserLoginData user)
+        public IHttpActionResult Login(UserLoginData user)
         {
             if (this.userModel.Login(user)) {
                 return Ok("{}");

@@ -5,7 +5,7 @@ using System.Web;
 using SearchAlgorithmsLib;
 using MazeLib;
 
-namespace Server.Models
+namespace MazeWebServer.Models
 {
     /// <summary>
     /// 

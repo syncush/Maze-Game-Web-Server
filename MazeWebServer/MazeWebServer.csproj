@@ -43,6 +43,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MazeGeneratorLib">
+      <HintPath>.\MazeGeneratorLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MazeLib">
+      <HintPath>.\MazeLib.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -80,7 +86,42 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\MazeGameDB.mdb" />
     <Content Include="Global.asax" />
+    <Content Include="HomePage.html" />
+    <Content Include="images\control.jpg" />
+    <Content Include="images\end.jpeg" />
+    <Content Include="images\gear.png" />
+    <Content Include="images\git.png" />
+    <Content Include="images\linkdn.png" />
+    <Content Include="images\Logo.png" />
+    <Content Include="images\maze.png" />
+    <Content Include="images\mazeGame.png" />
+    <Content Include="images\player.png" />
+    <Content Include="index.html" />
+    <Content Include="js\calendarview.js" />
+    <Content Include="js\css\calendarview.css" />
+    <Content Include="js\css\styles\form.css" />
+    <Content Include="js\css\styles\nova.css" />
+    <Content Include="js\HomePage.js" />
+    <Content Include="js\jotform.js" />
+    <Content Include="js\location.js" />
+    <Content Include="js\Login.js" />
+    <Content Include="js\Plugin.MazeBoard.js" />
+    <Content Include="js\protoplus-ui-form.js" />
+    <Content Include="js\protoplus.js" />
+    <Content Include="js\prototype.js" />
+    <Content Include="js\Register.js" />
+    <Content Include="js\Settings.js" />
+    <Content Include="js\Sha1Encrypt.js" />
+    <Content Include="js\Singleplayer.js" />
+    <Content Include="js\vendor\json2.js" />
+    <Content Include="Login.html" />
+    <Content Include="MultiPlayer.html" />
+    <Content Include="RankTable.html" />
+    <Content Include="Register.html" />
+    <Content Include="Settings.html" />
+    <Content Include="SinglePlayer.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -88,8 +129,17 @@
     <Compile Include="Controllers\GenerateMazeController.cs" />
     <Compile Include="Controllers\SolveController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Entitys\MazeParams.cs" />
+    <Compile Include="Entitys\NewUser.cs" />
+    <Compile Include="Entitys\SolveParams.cs" />
+    <Compile Include="Entitys\UserLoginData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="MazeGameDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MazeGameDBDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Models\GenerateMazeModel.cs" />
     <Compile Include="Models\SolveMazeModel.cs" />
@@ -98,6 +148,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="MazeGameDBDataSet.xsc">
+      <DependentUpon>MazeGameDBDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="MazeGameDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MazeGameDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="MazeGameDBDataSet.xss">
+      <DependentUpon>MazeGameDBDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -106,7 +167,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <ProjectReference Include="..\SearchAlgorithmsLib\SearchAlgorithmsLib.csproj">
+      <Project>{65307894-8812-41b9-98d4-973ac5bbf7b2}</Project>
+      <Name>SearchAlgorithmsLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

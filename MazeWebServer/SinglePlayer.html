@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/Plugin.MazeBoard.js"></script>
+    <script src="js/Singleplayer.js"></script>
+    <title></title>
+</head>
+<body>
+    <div id="myNavbar">
+
+    </div>
+
+<br/>
+<br/>
+<br/>
+    <div id="boardush">
+        <table>
+            <tr>
+                <th>
+                    <form id="playForm">
+                        <div>
+                            <label>
+                                <b>Name</b>
+                            </label>
+                            <input type="text" placeholder="Enter Maze Name" name="Name" required>
+                        </div>
+                        <div>
+                            <label>
+                                <b>Rows</b>
+                            </label>
+                            <input type="text" placeholder="Enter Rows" name="Rows" required>
+                        </div>
+                        <div>
+                            <label>
+                                <b>Cols</b>
+                            </label>
+                            <input type="text" placeholder="Enter Cols" name="Cols" required>
+                        </div>
+
+                        <div>
+                            <label></label>
+                            <button id="playButt" type="submit"> Play</button>
+                            <label></label>
+                            
+                        </div>
+                    </form>
+                    <br />
+                    <form id="solveForm">
+                        <select>
+                            <option value="BFS">BFS</option>
+                            <option value="DFS">DFS</option>
+                        </select>
+                        <br />
+                        <button id="solveButt" type="submit">Solve</button>
+                    </form>
+                </th>
+                <th><div><canvas id="mazeCanvas" width="300" height="300" style="border:2px black solid"></canvas></div></th>
+            </tr>
+        </table>
+        <button id="restartButt" type="button">Restart</button>
+</div> 
+<div><iframe width="560" height="315" src="https://www.youtube.com/embed/GNpXogUiYnU" frameborder="1" allowfullscreen></iframe></div>
+<span style="display:none;">
+        <img id="playerImage" src="images/player.png" />
+        <img id="endImage" src="images/end.jpeg" /> 
+    </span>
+</body>
+</html>
