@@ -16,9 +16,9 @@
                 Password: password
             };
             $.ajax({
-                type: "GET",
+                type: "Post",
                 url: "/api/User/Register",
-                data: userLoginJson,
+                data: JSON.stringify(userLoginJson),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data) {

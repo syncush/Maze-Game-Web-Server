@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MazeWebServer.Entitys;
 using System.Data.OleDb;
+using System.Data.SqlClient;
 
 namespace MazeWebServer.Models
 {
@@ -22,6 +23,7 @@ namespace MazeWebServer.Models
         private static OleDbCommand dCommand;
         private static OleDbConnection con;
         private static OleDbDataAdapter adapter;
+        private static OleDbCommandBuilder cmdb;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UserModel"/> class.
@@ -33,15 +35,13 @@ namespace MazeWebServer.Models
                 {
                     ds = new DataSet();
                     dataTable = new DataTable("Users");
-
-                    con = new OleDbConnection(@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = C:\Users\sync\Desktop\WebServer\WebServer\MazeGameDB.mdb");
+                    con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\sync\Source\Repos\WebServer\MazeWebServer\App_Data\MazeGameDB.mdb");
                     dCommand = new OleDbCommand("Select * from Users", con);
                     adapter = new OleDbDataAdapter(dCommand);
-
                     adapter.Fill(dataTable);
                     ds.Tables.Add(dataTable);
                     isInit = true;
-                    // con.Close();
+                    con.Close();
                 }
                 catch (Exception e)
                 {
@@ -66,7 +66,15 @@ namespace MazeWebServer.Models
                 newRow["Wins"] = 0;
                 newRow["Loses"] = 0;
                 dataTable.Rows.Add(newRow);
-                adapter.Update(ds, dataTable.TableName);
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandText = String.Format("INSERT INTO  Users ([Username], [Password], [Wins], [Loses], [Email]) VALUES ({0}, {1},{2},{3},{4})",
+                    "'"+user.UserName+"'", "'" + user.Password+"'", 0, 0, "'" +user.Email+"'");
+                cmd.Connection = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\sync\Source\Repos\WebServer\MazeWebServer\App_Data\MazeGameDB.mdb");
+
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
                 return true;
             }
         }

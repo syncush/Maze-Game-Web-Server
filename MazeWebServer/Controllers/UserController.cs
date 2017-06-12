@@ -11,8 +11,7 @@ namespace MazeWebServer.Controllers
     /// <summary>
     /// 
     /// </summary>
-    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
-    [Route("api/User")]
+    /// <seealso/>
     public class UserController : ApiController {
         
         private UserModel userModel;
@@ -28,8 +27,10 @@ namespace MazeWebServer.Controllers
         /// </summary>
         /// <param name="user">The user.</param>
         /// <returns></returns>
-        [HttpGet("Register")]
-        public IActionResult Register(NewUser user) {
+        /// 
+        [HttpPost]
+        [Route("api/User/Register")]
+        public IHttpActionResult Register(NewUser user) {
             if (this.userModel.Register(user)) {
                 return Ok("{}");
             } else
@@ -43,7 +44,8 @@ namespace MazeWebServer.Controllers
         /// </summary>
         /// <param name="user">The user.</param>
         /// <returns></returns>
-        [HttpGet("Login")]
+        [HttpPost]
+        [Route("api/User/Login")]
         public IHttpActionResult Login(UserLoginData user)
         {
             if (this.userModel.Login(user)) {

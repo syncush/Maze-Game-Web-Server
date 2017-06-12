@@ -32,9 +32,9 @@
             Cols: $("#playForm input[name= 'Cols']").val()
         };
         $.ajax({
-            type: "GET",
-            url: "/api/GenerateMaze",
-            data: mazeData,
+            type: "Post",
+            url: "/api/GenerateMaze/Get",
+            data: JSON.stringify(mazeData),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
@@ -140,9 +140,9 @@
         };
 
         $.ajax({
-            type: "GET",
-            url: "/api/Solve",
-            data: solveData,
+            type: "Post",
+            url: "/api/Solve/Get",
+            data: JSON.stringify(solveData),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {

@@ -11,13 +11,14 @@
             Password: password
         };
         $.ajax({
-            type: "GET",
+            type: "Post",
             url: "/api/User/Login",
-            data: loginData,
+            data: JSON.stringify(loginData),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
                 alert("Welcome back " + userName + "!");
+                sessionStorage.setItem('user', userName);
                 $(location).attr("href", "index.html");
             },
             error: function (xhr, textStatus, errorThrown) {

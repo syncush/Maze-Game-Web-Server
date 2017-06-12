@@ -6,7 +6,6 @@ using System.Web.Http;
 
 namespace MazeWebServer.Controllers
 {
-    [Route("api/Solve")]
     public class SolveController : ApiController
     {
         private SolveMazeModel smModel;
@@ -14,7 +13,8 @@ namespace MazeWebServer.Controllers
         {
             this.smModel = new SolveMazeModel();
         }
-        [HttpGet]
+        [HttpPost]
+        [Route("api/Solve/Get")]
         public IHttpActionResult Get(SolveParams value)
         {
             Algorithm algo = Algorithm.BFS;
