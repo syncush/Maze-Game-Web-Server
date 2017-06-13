@@ -107,8 +107,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\MazeGameDB.mdb" />
     <Content Include="Global.asax" />
-    <Content Include="HomePage.html" />
+    <Content Include="images\doge.jpg" />
+    <Content Include="images\regist.jpg" />
+    <Content Include="index.html" />
     <Content Include="images\control.jpg" />
     <Content Include="images\end.jpeg" />
     <Content Include="images\gear.png" />
@@ -118,16 +121,16 @@
     <Content Include="images\maze.png" />
     <Content Include="images\mazeGame.png" />
     <Content Include="images\player.png" />
-    <Content Include="index.html" />
+    <Content Include="mainPage.html" />
     <Content Include="js\calendarview.js" />
     <Content Include="js\css\calendarview.css" />
     <Content Include="js\css\styles\form.css" />
     <Content Include="js\css\styles\nova.css" />
     <Content Include="js\HomePage.js" />
-    <Content Include="js\index.js" />
     <Content Include="js\jotform.js" />
     <Content Include="js\location.js" />
     <Content Include="js\Login.js" />
+    <Content Include="js\Multiplayer.js" />
     <Content Include="js\Plugin.MazeBoard.js" />
     <Content Include="js\protoplus-ui-form.js" />
     <Content Include="js\protoplus.js" />
@@ -141,6 +144,7 @@
     <Content Include="MultiPlayer.html" />
     <Content Include="RankTable.html" />
     <Content Include="Register.html" />
+    <Content Include="App_Data\MazeGameDB.ldb" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -155,10 +159,12 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\GenerateMazeController.cs" />
+    <Compile Include="Controllers\ListMultiController.cs" />
     <Compile Include="Controllers\MultiplayerHub.cs" />
     <Compile Include="Controllers\SolveController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Entitys\MazeParams.cs" />
+    <Compile Include="Entitys\MultiPlayerInfoPackage.cs" />
     <Compile Include="Entitys\NewUser.cs" />
     <Compile Include="Entitys\SolveParams.cs" />
     <Compile Include="Entitys\UserLoginData.cs" />
@@ -166,6 +172,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\GenerateMazeModel.cs" />
+    <Compile Include="Models\MultiplayerModel.cs" />
     <Compile Include="Models\SolveMazeModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -188,9 +195,7 @@
       <Name>SearchAlgorithmsLib</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

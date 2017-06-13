@@ -20,7 +20,6 @@
     var playerImg = document.getElementById("playerImage");
     var endGameImg = document.getElementById("endImage");
 
-    $("#myNavbar").load("HomePage.html");
     $("#playForm input[name = 'Rows']").val(localStorage.getItem("Rowz"));
     $("#playForm input[name= 'Cols']").val(localStorage.getItem("Colsz"));
 

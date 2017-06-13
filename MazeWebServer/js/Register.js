@@ -1,7 +1,4 @@
 ﻿jQuery(function ($) {
-    $(function () {
-        $("#myNavbar").load("HomePage.html");
-    });
 
     $("#registForm").on("submit", function (e) {
         e.preventDefault();
@@ -36,4 +33,5 @@
         }
 
     });
+    $("#back").css('background-image', 'url(' + "/images/regist.jpg" + ')');
 });

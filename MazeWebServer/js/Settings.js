@@ -1,6 +1,5 @@
 ﻿jQuery(function($) {
     $(function() {
-        $("#myNavbar").load("HomePage.html");
         $("#Rows").val(localStorage.getItem("Rowz"));
         $("#Cols").val(localStorage.getItem("Colsz"));
     });

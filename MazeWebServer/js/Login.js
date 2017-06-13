@@ -1,7 +1,4 @@
 ﻿jQuery(function ($) {
-
-    $("#myNavBar").load("HomePage.html");
-
     $("#loginForm").on("submit", function (e) {
         e.preventDefault();
         var userName = $("#userNameInput").val();
@@ -26,4 +23,5 @@
             }
         });
     });
+    $('#back').css('background-image', 'url(' + "/images/doge.jpg" + ')');
 });

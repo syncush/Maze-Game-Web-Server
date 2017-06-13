@@ -1,19 +1,65 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/Plugin.MazeBoard.js"></script>
+    <script src="js/Multiplayer.js"></script>
+    
+    <title>Multiplayer Game</title>
 </head>
 <body>
-    <div id="myNavbar">
+    <div id="myNavBar">
 
     </div>
 <br/>
-    <br/>
+<br/>
+    <div id="boardush">
+        <table>
+            <tr>
+                <th>
+                    <form id="playForm">
+                        <br />
+                        <select id="gamesList">
+                        </select>
+                        <br />
+                        <div>
+                            <label>
+                                <b>Name</b>
+                            </label>
+                            <input type="text" placeholder="Enter Maze Name" name="Name" required>
+                        </div>
+                        <div>
+                            <label>
+                                <b>Rows</b>
+                            </label>
+                            <input type="text" placeholder="Enter Rows" name="Rows" required>
+                        </div>
+                        <div>
+                            <label>
+                                <b>Cols</b>
+                            </label>
+                            <input type="text" placeholder="Enter Cols" name="Cols" required>
+                        </div>
+
+                        <div>
+                            <label></label>
+                            <button id="startButt" type="submit"> Start</button>
+                            <label></label>
+                        </div>
+                    </form>
+                    
+                </th>
+                <th><div><canvas id="mazeCanvas" width="300" height="300" style="border:2px black solid"></canvas></div></th>
+                <th><div><canvas id="enemyCanvas" width="300" height="300" style="border:2px black solid"></canvas></div></th>
+            </tr>
+        </table>
+    </div> 
 <div>
-	<form id="startForm">
-	<input type="text">
-	</form>
 
 </div>
+    <span style="display:none;">
+        <img id="playerImage" src="images/player.png" />
+        <img id="endImage" src="images/end.jpeg" />
+    </span>
 </body>
 </html>
