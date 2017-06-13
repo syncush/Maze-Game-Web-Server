@@ -6,12 +6,18 @@
     $(function () {
         var isUser = sessionStorage.getItem('user');
         if (isUser != undefined && isUser == null) {
-            //TODO sett attr
+            isLogged = true;
+            $("#login").innerHTML = isUser;
+            $("#regist").innerHTML = "Logout";
         }
     });
     $("#regist").on("click", function () {
         if (!isLogged) {
             MoveForm("Register.html");
+        } else {
+            isLogged = false;
+            $("#regist").innerHTML = "Register";
+            $("#login").innerHTML = "Login";
         }
     });
     $("#login").on("click", function () {

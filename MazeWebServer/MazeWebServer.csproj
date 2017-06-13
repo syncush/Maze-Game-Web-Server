@@ -121,6 +121,7 @@
     <Content Include="images\maze.png" />
     <Content Include="images\mazeGame.png" />
     <Content Include="images\player.png" />
+    <Content Include="js\css\RegisterCSS.css" />
     <Content Include="mainPage.html" />
     <Content Include="js\calendarview.js" />
     <Content Include="js\css\calendarview.css" />
