@@ -113,7 +113,7 @@
             canvasFX.drawImage(playerImg, currY * cellWidth, currX * cellHeight, cellWidth, cellHeight);
             canvasFX.drawImage(endGameImg, endYaxis * cellWidth, endXaxis * cellHeight, cellWidth, cellHeight);
             if (currX == endXaxis && currY == endYaxis) {
-                alert("You won your mother fucker nigger.");
+                alert("You won!");
                 isAbleToMove = false;
             }
         }
@@ -191,7 +191,7 @@
                     canvasFX.drawImage(playerImg, currY * cellWidth, currX * cellHeight, cellWidth, cellHeight);
                     if (currX == endXaxis && currY == endYaxis) {
                         clearInterval(refreshIntervalId);
-                        alert("Congratz!");
+                        alert("You won!");
                         isAbleToMove = false;
                         $('#playButt').prop('disabled', false);
                         $('#solveButt').prop('disabled', false);
