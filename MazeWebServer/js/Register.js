@@ -33,5 +33,5 @@
         }
 
     });
-    $("#back").css('background-image', 'url(' + "/images/regist.jpg" + ')');
+    $("#back").addClass('abale');
 });
