@@ -1,15 +1,27 @@
 ﻿jQuery(function ($) {
     var isLogged = false;
+    var refreshIntervalId;
+    var data = null;
+
     function MoveForm(form) {
         $("#palapa").load(form);
     }
-    
-    $(function () {
-        var isUser = sessionStorage.getItem('user');
-        if (isUser == null) {
-            //TODO sett attr
+    refreshIntervalId = setInterval(function () {
+        if (data == null) {
+            data = sessionStorage.getItem('user');
+            if (data != null) {
+                isLogged = true;
+                clearInterval(refreshIntervalId);
+                $("#regist").html("Logout");
+                $("#login").html(sessionStorage.getItem('user'));
+            } else {
+                isLogged = false;
+                $("#regist").html("Register");
+                $("#login").html("Login");
+            }
         }
-    });
+
+    }, 2000);
     $("#regist").on("click", function () {
         if (!isLogged) {
             MoveForm("Register.html");
@@ -25,20 +37,6 @@
             MoveForm("Login.html");
         }
     });
-    var refreshIntervalId = setInterval(function () {
-        if (data != null) {
-            data = sessionStorage.getItem('user');
-            if (data != null) {
-                break;
-            } else {
-                isLogged = false;
-                sessionStorage.clear();
-                $("#regist").html("Register");
-                $("#login").html("Login");
-            }
-        }
-        
-    }, 1000);
     $("#settings").on("click", function () {
         MoveForm("Settings.html");
     });
