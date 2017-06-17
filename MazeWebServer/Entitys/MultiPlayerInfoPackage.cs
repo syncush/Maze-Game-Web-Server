@@ -11,70 +11,19 @@ namespace MazeWebServer.Entitys
     /// <summary>
     /// Class desribes a info container for a Player game.
     /// </summary>
-    class MultiPlayerInfoPackage {
-        /// <summary>
-        /// The host socket;
-        /// The guest socket;
-        /// The maze they host and guest are playing on.
-        /// </summary>
-        private string host;
-
-        /// <summary>
-        /// The guest
-        /// </summary>
-        private string guest;
+    class MultiPlayerInfoPackage
+    {
         /// <summary>
         /// The maze
         /// </summary>
-        private Maze maze;
-
+        public Maze Maze { get; set; }
         /// <summary>
-        /// Gets or sets the host.
+        /// Gets or sets a value indicating whether this instance is started.
         /// </summary>
         /// <value>
-        /// The host.
+        ///   <c>true</c> if this instance is started; otherwise, <c>false</c>.
         /// </value>
-        public string Host {
-            get { return this.host; }
-            set {
-                this.host = value;
+        public Boolean IsStarted { get; set; }
 
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the guest.
-        /// </summary>
-        /// <value>
-        /// The guest.
-        /// </value>
-        public string Guest {
-            get { return this.guest; }
-            set {
-                this.guest = value;
-
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the maze.
-        /// </summary>
-        /// <value>
-        /// The maze.
-        /// </value>
-        public Maze Maze {
-            get { return this.maze; }
-            set { this.maze = value; }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MultiPlayerInfoPackage"/> class.
-        /// </summary>
-        /// <param name="host">The host. The host socket</param>
-        /// <param name="maze">The maze.the maze the Player game is on </param>
-        public MultiPlayerInfoPackage(string host, Maze maze) {
-            this.Host = host;
-            this.maze = maze;
-        }
     }
 }

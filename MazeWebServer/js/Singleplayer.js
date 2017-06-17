@@ -50,7 +50,7 @@
                 canv.height = 50 * cols;
                 cellWidth = canv.width / cols;
                 cellHeight = canv.height / rows;
-                $("#mazeCanvas").drawMaze(data, endGameImg, endXaxis, endYaxis, playerImg, currX, currY);
+                $("#mazeCanvas").drawMaze("mazeCanvas", data, endGameImg, endXaxis, endYaxis, playerImg, currX, currY);
                 isAbleToMove = true;
 
             },
@@ -124,7 +124,7 @@
         $('input[name="Rows"]').val(localStorage.getItem("Rowz"));
         //$("#AlgoritmComboBox").val((localStorage.getItem("AlgoSelected")));
     }
-    
+
     $("#solveForm").on("submit", function (e) {
         e.preventDefault();
         var algoNum = 1;

@@ -1,6 +1,6 @@
 ﻿(function ($) {
-    $.fn.drawMaze = function (maze, exitImg, exitX, exitY, initPosImg, initX,initY) {
-        var myCanvas = document.getElementById("mazeCanvas");
+    $.fn.drawMaze = function (boardName, maze, exitImg, exitX, exitY, initPosImg, initX,initY) {
+        var myCanvas = document.getElementById(boardName);
         var context = mazeCanvas.getContext("2d");
         var rows = maze.Rows;
         var cols = maze.Cols;

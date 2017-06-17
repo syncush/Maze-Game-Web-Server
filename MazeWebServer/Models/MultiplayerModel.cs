@@ -7,13 +7,15 @@ using MazeLib;
 using MazeWebServer.Entitys;
 using MazeGeneratorLib;
 using SearchAlgorithmsLib;
+using MazeWebServer.Entitys;
 
 namespace MazeWebServer.Models
 {
-   
+
     public class MultiplayerModel
     {
         static Dictionary<string, MultiPlayerInfoPackage> mpDB = new Dictionary<string, MultiPlayerInfoPackage>();
+        private readonly IMazeGenerator generator;
         /// <summary>
         /// Generates the maze.
         /// </summary>
@@ -25,41 +27,60 @@ namespace MazeWebServer.Models
         /// </returns>
         public MultiplayerModel()
         {
+            generator = new DFSMazeGenerator();
         }
-        public Maze Start(string host, string name, int rows, int cols)
+        /// <summary>
+        /// Starts the specified host.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="rows">The rows.</param>
+        /// <param name="cols">The cols.</param>
+        /// <returns></returns>
+        public Maze Start(string name, int rows, int cols)
         {
             if (!mpDB.ContainsKey(name))
             {
-                IMazeGenerator generator = new DFSMazeGenerator();   
                 Maze maze = generator.Generate(rows, cols);
                 maze.Name = name;
-                mpDB.Add(name,new MultiPlayerInfoPackage(host, maze));
-                while(mpDB[name].Guest == null)
-                {
-                    Thread.Sleep(500);
-                }
+                mpDB.Add(name, new MultiPlayerInfoPackage());
+                mpDB[name].Maze = maze;
+                mpDB[name].IsStarted = false;
                 return maze;
-            } else
+            }
+            else
             {
                 return null;
             }
         }
+        /// <summary>
+        /// Lists all games.
+        /// </summary>
+        /// <returns></returns>
         public List<string> ListAllGames()
         {
             List<string> gamesList = new List<string>();
-            foreach(string maze in mpDB.Keys)
+            foreach (string maze in mpDB.Keys)
             {
-                if(mpDB[maze].Guest == null)
-                {
-                    gamesList.Add(maze);
-                }
+                gamesList.Add(maze);
             }
             return gamesList;
         }
-        public Maze Join(string guest, string game)
+        /// <summary>
+        /// Joins the specified game.
+        /// </summary>
+        /// <param name="game">The game.</param>
+        /// <returns></returns>
+        public Maze Join(string game)
         {
-            mpDB[game].Guest = guest;
-            return mpDB[game].Maze;
+            if (mpDB.ContainsKey(game))
+            {
+                mpDB["name"].IsStarted = true;
+                return mpDB["name"].Maze;
+            }
+            else
+            {
+                return null;
+            }
         }
-    } 
+    }
 }

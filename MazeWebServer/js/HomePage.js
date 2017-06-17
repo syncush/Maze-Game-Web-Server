@@ -1,6 +1,6 @@
 ﻿jQuery(function ($) {
     var isLogged = false;
-    var refreshIntervalId;
+    var refreshIntervalId = null;
     var data = null;
 
     function MoveForm(form) {
