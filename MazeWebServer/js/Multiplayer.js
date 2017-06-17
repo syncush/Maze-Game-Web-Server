@@ -1,6 +1,6 @@
 ﻿jQuery(function ($) {
-    var enemyPosotionX;
-    var enemyPosotionY;
+    var enemyPositionX;
+    var enemyPositionY;
     var positionX;
     var positionY;
     var endXaxis;
@@ -15,12 +15,12 @@
     var maze;
     myImg = document.getElementById("playerImage");
     exitImg = document.getElementById("endImage");
-    var canvasFX = getElementById("mazeCanvas");
-    $.connection.hub.start().done(function () {
-        var mult = $.connection.multiplayerHub;
+    var canvasFX = document.getElementById("mazeCanvas");
+    var mult = $.connection.multiplayerHub;
 
+    $.connection.hub.start().done(function () {
         function movePlayer(boardName, posX, poxY, direction) {
-            var myCan = getElementById(boardName);
+            var myCan = document.getElementById(boardName);
             var myCanFX = myCan.getContext("2d");
             if (isAbleToMove === true) {
                 myCanFX.fillStyle = "#FFFFFF";
@@ -31,8 +31,6 @@
                         if (posX >= 0 && posX < rows && positionY - 1 < cols && positionY >= 0 && maze[k] == 0) {
                             myCanFX.fillRect(cellWidth * positionY, cellHeight * posX, cellWidth, cellHeight);
                             positionY = positionY - 1;
-
-
                         }
                         break;
                     case "up":
@@ -107,27 +105,38 @@
                 }
             });
         });
+
+
+
         //send requst to start gmae to server
-        $("#startButton").on("click", function (e) {
+        $("#playForm").on("submit", function (e) {
+            e.preventDefault();
             var mazeData = {
                 Name: $("#playForm input[name = 'Name']").val(),
                 Rows: $("#playForm input[name= 'Rows']").val(),
                 Cols: $("#playForm input[name= 'Cols']").val()
             };
-            e.preventDefault();
+            mult.server.start(mazeData.Name, mazeData.Rows, mazeData.Cols);
         });
-        $("#joinButton").on("click", function (e) {
+        $("#joinButt").on("click", function (e) {
             e.preventDefault();
             var joinedMazeName = $('#gamesList option:selected').text();
-            //TODO ASK HUB TO JOIN GAME
+            mult.server.join(joinedMazeName);
         });
+
+
+        mult.client.gotMovement = function gotMovement(direction) {
+            movePlayer("enemyCanvas", enemyPositionX, enemyPositionY, direction);
+        };
+
         //get the maze from server after the second player connected
-        mult.client.GameStarted = function gameStarted(data) {
+        mult.client.gameStarted = function (data) {
             mazeJSON = data;
+            isAbleToMove = true;
             positionX = data["Start"]["Row"];
             positionY = data["Start"]["Col"];
-            enemyPosotionX = positionX;
-            enemyPosotionY = positionY;
+            enemyPositionX = positionX;
+            enemyPositionY = positionY;
             endXaxis = data["End"]["Row"];
             endYaxis = data["End"]["Col"];
             maze = data["Maze"];
@@ -136,25 +145,35 @@
             canv.height = 50 * cols;
             cellWidth = canv.width / cols;
             cellHeight = canv.height / rows;
+            var enemyCanvas = document.getElementById('enemyCanvas');
             $("#mazeCanvas").drawMaze("mazeCanvas", data, exitImg, endXaxis, endYaxis, myImg, positionX, positionY);
             $("#enemyCanvas").drawMaze("enemyCanvas", data, exitImg, endXaxis, endYaxis, myImg, positionX, positionY);
         };
+
+
+
+
         $("body").on("keyup", function (e) {
             switch (e.which) {
                 case 37:
                     movePlayer("mazeCanvas", positionX, positionY, "left");
+                    mult.server.moveAction("down");
                     break;
                 case 38:
                     movePlayer("mazeCanvas", positionX, positionY, "up");
+                    mult.server.moveAction("down");
                     break;
                 case 39:
-                    movePlayer("mazeCanvas", positionX, positionY, "up");
+                    movePlayer("mazeCanvas", positionX, positionY, "right");
+                    mult.server.moveAction("down");
                     break;
                 case 40:
                     movePlayer("mazeCanvas", positionX, positionY, "down");
+                    mult.server.moveAction("down");
                     break;
             }
-            mult.server.MoveAction("down");
         });
+
+
     });
 });

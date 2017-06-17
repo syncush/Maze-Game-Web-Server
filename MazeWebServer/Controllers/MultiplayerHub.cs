@@ -20,11 +20,12 @@ namespace MazeWebServer.Controllers
     /// 
     /// </summary>
     /// <seealso cref="Microsoft.AspNet.SignalR.Hub" />
-    [HubName("MultiplayerHub")]
+    [HubName("multiplayerHub")]
     public class MultiplayerHub : Hub
     {
         private ConcurrentDictionary<String, PlayerIDInfo> connectedUsers = new ConcurrentDictionary<string, PlayerIDInfo>();
         private static MultiplayerModel mpModel = new MultiplayerModel();
+
         public void Start(string mazeName, int rows, int cols)
         {
             Maze maze = mpModel.Start(mazeName, rows, cols);
@@ -44,7 +45,14 @@ namespace MazeWebServer.Controllers
             {
                 PlayerIDInfo pIDInfo = connectedUsers[mazeName];
                 pIDInfo.guestID = this.Context.ConnectionId;
-                //TODO ACTIVATE GAME STARTED.
+                foreach (string game in connectedUsers.Keys)
+                {
+                    if (connectedUsers[game].hostID == this.Context.ConnectionId)
+                    {
+                        this.Clients.Client(this.Context.ConnectionId).gameStarted(maze.ToJSON());
+                        this.Clients.Client(connectedUsers[game].hostID).gameStarted(maze.ToJSON());
+                    }
+                }
             }
         }
 
@@ -70,6 +78,34 @@ namespace MazeWebServer.Controllers
                 this.Clients.Client(otherPlayer).move(direction);
             }
 
+        }
+
+        public void Close()
+        {
+            string otherPlayer = "";
+            PlayerIDInfo temp;
+            string gameToBeDeleted = "";
+            string currPlayer = this.Context.ConnectionId;
+            foreach (string game in connectedUsers.Keys)
+            {
+                if (this.connectedUsers[game].hostID == currPlayer)
+                {
+                    otherPlayer = this.connectedUsers[game].guestID;
+                    gameToBeDeleted = game;
+                    break;
+                }
+                if (this.connectedUsers[game].guestID == currPlayer)
+                {
+                    otherPlayer = this.connectedUsers[game].hostID;
+                    gameToBeDeleted = game;
+                    break;
+                }
+            }
+            if (otherPlayer != "")
+            {
+                this.connectedUsers.TryRemove(gameToBeDeleted, out temp);
+                this.Clients.Client(otherPlayer).close();
+            }
         }
     }
 }
