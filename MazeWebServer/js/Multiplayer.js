@@ -5,6 +5,8 @@
     var positionY;
     var endXaxis;
     var endYaxis;
+    var rows;
+    var cols;
     var mazeJSON = null;
     var myImg = null;
     var exitImg = null;
@@ -13,13 +15,86 @@
     var cellWidth = 0;
     var k = -1;
     var maze;
+
     myImg = document.getElementById("playerImage");
     exitImg = document.getElementById("endImage");
     var canvasFX = document.getElementById("mazeCanvas");
     var mult = $.connection.multiplayerHub;
 
+   
+
+    function moveEnemy(boardName, direction) {
+        var myCan = document.getElementById(boardName);
+        var myCanFX = myCan.getContext("2d");
+        if (isAbleToMove === true) {
+            myCanFX.fillStyle = "#FFFFFF";
+            // Handle the arrow keys
+            switch (direction) {
+                case "left":
+                    k = enemyPositionX * rows + (enemyPositionY - 1);
+                    myCanFX.fillRect(cellWidth * enemyPositionY, cellHeight * enemyPositionX, cellWidth, cellHeight);
+                    enemyPositionY = enemyPositionY - 1;
+                    break;
+                case "up":
+                    k = (enemyPositionX - 1) * rows + (enemyPositionY);
+                    myCanFX.fillRect(cellWidth * enemyPositionY, cellHeight * enemyPositionX, cellWidth, cellHeight);
+                    enemyPositionX = enemyPositionX - 1;
+                    break;
+                case "right":
+                    k = enemyPositionX * rows + (enemyPositionY + 1);
+                    myCanFX.fillRect(cellWidth * enemyPositionY, cellHeight * enemyPositionX, cellWidth, cellHeight);
+                    enemyPositionY = enemyPositionY + 1;
+                    break;
+                case "down":
+                    k = (enemyPositionX + 1) * rows + (enemyPositionY);
+                    myCanFX.fillRect(cellWidth * enemyPositionY, cellHeight * enemyPositionX, cellWidth, cellHeight);
+                    enemyPositionX = enemyPositionX + 1;
+                    break;
+            }
+        }
+        myCanFX.drawImage(myImg, enemyPositionY * cellWidth, enemyPositionX * cellHeight, cellWidth, cellHeight);
+        myCanFX.drawImage(exitImg, endYaxis * cellWidth, endXaxis * cellHeight, cellWidth, cellHeight);
+    }
+
+    mult.client.gotMessage = function (direction) {
+        moveEnemy("enemyCanvas", direction);
+    };
+
+    mult.client.close = function (direction) {
+        alert("You Lost!");
+        isAbleToMove = false;
+        $("#palapa").load("index.html");
+    };
+
+    mult.client.gameStarted = function (data) {
+        mazeJSON = data;
+        isAbleToMove = true;
+        positionX = data["Start"]["Row"];
+        positionY = data["Start"]["Col"];
+        enemyPositionX = positionX;
+        enemyPositionY = positionY;
+        endXaxis = data["End"]["Row"];
+        endYaxis = data["End"]["Col"];
+        maze = data["Maze"];
+        var canv = document.getElementById('mazeCanvas');
+        rows = data["Rows"];
+        cols = data["Cols"];
+        canv.width = 50 * rows;
+        canv.height = 50 * cols;
+        cellWidth = canv.width / cols;
+        cellHeight = canv.height / rows;
+        var enemyCanvas = document.getElementById('enemyCanvas');
+        $("#mazeCanvas").drawMaze("mazeCanvas", data, exitImg, endXaxis, endYaxis, myImg, positionX, positionY);
+        canv = document.getElementById('enemyCanvas');
+        canv.width = 50 * rows;
+        canv.height = 50 * cols;
+        cellWidth = canv.width / cols;
+        cellHeight = canv.height / rows;
+        $("#enemyCanvas").drawMaze("enemyCanvas", data, exitImg, endXaxis, endYaxis, myImg, positionX, positionY);
+    };
+
     $.connection.hub.start().done(function () {
-        function movePlayer(boardName, posX, poxY, direction) {
+        function movePlayer(boardName, posX, poxY, direction, shouldNotify) {
             var myCan = document.getElementById(boardName);
             var myCanFX = myCan.getContext("2d");
             if (isAbleToMove === true) {
@@ -81,6 +156,11 @@
                 if (posX == endXaxis && positionY == endYaxis) {
                     alert("You won!");
                     isAbleToMove = false;
+                    mult.server.moveAction(direction);
+                    setTimeout(function () { mult.server.close($("#login").html()); }, 400);
+                }
+                if (shouldNotify == true) {
+                    mult.server.moveAction(direction);
                 }
             }
         }
@@ -125,55 +205,31 @@
         });
 
 
-        mult.client.gotMovement = function gotMovement(direction) {
-            movePlayer("enemyCanvas", enemyPositionX, enemyPositionY, direction);
-        };
-
-        //get the maze from server after the second player connected
-        mult.client.gameStarted = function (data) {
-            mazeJSON = data;
-            isAbleToMove = true;
-            positionX = data["Start"]["Row"];
-            positionY = data["Start"]["Col"];
-            enemyPositionX = positionX;
-            enemyPositionY = positionY;
-            endXaxis = data["End"]["Row"];
-            endYaxis = data["End"]["Col"];
-            maze = data["Maze"];
-            var canv = document.getElementById('mazeCanvas');
-            canv.width = 50 * rows;
-            canv.height = 50 * cols;
-            cellWidth = canv.width / cols;
-            cellHeight = canv.height / rows;
-            var enemyCanvas = document.getElementById('enemyCanvas');
-            $("#mazeCanvas").drawMaze("mazeCanvas", data, exitImg, endXaxis, endYaxis, myImg, positionX, positionY);
-            $("#enemyCanvas").drawMaze("enemyCanvas", data, exitImg, endXaxis, endYaxis, myImg, positionX, positionY);
-        };
-
 
 
 
         $("body").on("keyup", function (e) {
             switch (e.which) {
                 case 37:
-                    movePlayer("mazeCanvas", positionX, positionY, "left");
-                    mult.server.moveAction("down");
+                    movePlayer("mazeCanvas", positionX, positionY, "left", true);
+
                     break;
                 case 38:
-                    movePlayer("mazeCanvas", positionX, positionY, "up");
-                    mult.server.moveAction("down");
+                    movePlayer("mazeCanvas", positionX, positionY, "up", true);
+
                     break;
                 case 39:
-                    movePlayer("mazeCanvas", positionX, positionY, "right");
-                    mult.server.moveAction("down");
+                    movePlayer("mazeCanvas", positionX, positionY, "right", true);
+
                     break;
                 case 40:
-                    movePlayer("mazeCanvas", positionX, positionY, "down");
-                    mult.server.moveAction("down");
+                    movePlayer("mazeCanvas", positionX, positionY, "down", true);
+
                     break;
             }
         });
 
 
     });
+    
 });

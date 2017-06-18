@@ -74,8 +74,8 @@ namespace MazeWebServer.Models
         {
             if (mpDB.ContainsKey(game))
             {
-                mpDB["name"].IsStarted = true;
-                return mpDB["name"].Maze;
+                mpDB[game].IsStarted = true;
+                return mpDB[game].Maze;
             }
             else
             {

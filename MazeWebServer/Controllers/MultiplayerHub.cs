@@ -7,6 +7,8 @@ using System.Collections.Concurrent;
 using MazeWebServer.Models;
 using Microsoft.AspNet.SignalR.Hubs;
 using MazeWebServer.Models;
+using Newtonsoft.Json.Linq;
+using MazeWebServer.Entitys;
 using MazeLib;
 
 namespace MazeWebServer.Controllers
@@ -23,17 +25,17 @@ namespace MazeWebServer.Controllers
     [HubName("multiplayerHub")]
     public class MultiplayerHub : Hub
     {
-        private ConcurrentDictionary<String, PlayerIDInfo> connectedUsers = new ConcurrentDictionary<string, PlayerIDInfo>();
-        private static MultiplayerModel mpModel = new MultiplayerModel();
+        public static ConcurrentDictionary<String, GameInfo> connectedUsers = new ConcurrentDictionary<string, GameInfo>();
+        public static MultiplayerModel mpModel = new MultiplayerModel();
 
         public void Start(string mazeName, int rows, int cols)
         {
             Maze maze = mpModel.Start(mazeName, rows, cols);
             if (maze != null)
             {
-                PlayerIDInfo pIDInfo = new PlayerIDInfo();
-                pIDInfo.hostID = this.Context.ConnectionId;
-                pIDInfo.guestID = "";
+                GameInfo pIDInfo = new GameInfo();
+                pIDInfo.HostID = this.Context.ConnectionId;
+                pIDInfo.GuestID = "";
                 Boolean sucess = connectedUsers.TryAdd(mazeName, pIDInfo);
             }
         }
@@ -43,16 +45,10 @@ namespace MazeWebServer.Controllers
             Maze maze = mpModel.Join(mazeName);
             if (maze != null)
             {
-                PlayerIDInfo pIDInfo = connectedUsers[mazeName];
-                pIDInfo.guestID = this.Context.ConnectionId;
-                foreach (string game in connectedUsers.Keys)
-                {
-                    if (connectedUsers[game].hostID == this.Context.ConnectionId)
-                    {
-                        this.Clients.Client(this.Context.ConnectionId).gameStarted(maze.ToJSON());
-                        this.Clients.Client(connectedUsers[game].hostID).gameStarted(maze.ToJSON());
-                    }
-                }
+                connectedUsers[mazeName].GuestID = this.Context.ConnectionId;
+                JObject mazeJSON = JObject.Parse(maze.ToJSON());
+                this.Clients.Client(this.Context.ConnectionId).gameStarted(mazeJSON);
+                this.Clients.Client(connectedUsers[mazeName].HostID).gameStarted(mazeJSON);
             }
         }
 
@@ -62,48 +58,49 @@ namespace MazeWebServer.Controllers
             string currPlayer = this.Context.ConnectionId;
             foreach (string game in connectedUsers.Keys)
             {
-                if (this.connectedUsers[game].hostID == currPlayer)
+                if (connectedUsers[game].HostID == currPlayer)
                 {
-                    otherPlayer = this.connectedUsers[game].guestID;
+                    otherPlayer = connectedUsers[game].GuestID;
                     break;
                 }
-                if (this.connectedUsers[game].guestID == currPlayer)
+                if (connectedUsers[game].GuestID == currPlayer)
                 {
-                    otherPlayer = this.connectedUsers[game].hostID;
+                    otherPlayer = connectedUsers[game].HostID;
                     break;
                 }
             }
             if (otherPlayer != "")
             {
-                this.Clients.Client(otherPlayer).move(direction);
+                this.Clients.Client(otherPlayer).gotMessage(direction);
             }
 
         }
 
-        public void Close()
+        public void Close(string winnerPlayer)
         {
             string otherPlayer = "";
-            PlayerIDInfo temp;
+            GameInfo temp;
             string gameToBeDeleted = "";
             string currPlayer = this.Context.ConnectionId;
             foreach (string game in connectedUsers.Keys)
             {
-                if (this.connectedUsers[game].hostID == currPlayer)
+                if (connectedUsers[game].HostID == currPlayer)
                 {
-                    otherPlayer = this.connectedUsers[game].guestID;
+                    otherPlayer = connectedUsers[game].GuestID;
                     gameToBeDeleted = game;
                     break;
                 }
-                if (this.connectedUsers[game].guestID == currPlayer)
+                if (connectedUsers[game].GuestID == currPlayer)
                 {
-                    otherPlayer = this.connectedUsers[game].hostID;
+                    otherPlayer = connectedUsers[game].HostID;
                     gameToBeDeleted = game;
                     break;
                 }
             }
             if (otherPlayer != "")
             {
-                this.connectedUsers.TryRemove(gameToBeDeleted, out temp);
+                //UPDATE WINNER
+                connectedUsers.TryRemove(gameToBeDeleted, out temp);
                 this.Clients.Client(otherPlayer).close();
             }
         }

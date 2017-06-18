@@ -164,6 +164,7 @@
     <Compile Include="Controllers\MultiplayerHub.cs" />
     <Compile Include="Controllers\SolveController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Entitys\GameInfo.cs" />
     <Compile Include="Entitys\MazeParams.cs" />
     <Compile Include="Entitys\MultiPlayerInfoPackage.cs" />
     <Compile Include="Entitys\NewUser.cs" />
