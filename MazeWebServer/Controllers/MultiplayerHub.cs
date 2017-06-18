@@ -80,6 +80,7 @@ namespace MazeWebServer.Controllers
         {
             string otherPlayer = "";
             GameInfo temp;
+
             string gameToBeDeleted = "";
             string currPlayer = this.Context.ConnectionId;
             foreach (string game in connectedUsers.Keys)
@@ -101,6 +102,7 @@ namespace MazeWebServer.Controllers
             {
                 //UPDATE WINNER
                 connectedUsers.TryRemove(gameToBeDeleted, out temp);
+                mpModel.Close(gameToBeDeleted);
                 this.Clients.Client(otherPlayer).close();
             }
         }

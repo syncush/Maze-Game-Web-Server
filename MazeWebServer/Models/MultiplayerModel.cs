@@ -61,7 +61,11 @@ namespace MazeWebServer.Models
             List<string> gamesList = new List<string>();
             foreach (string maze in mpDB.Keys)
             {
-                gamesList.Add(maze);
+                if (!mpDB[maze].IsStarted)
+                {
+                    gamesList.Add(maze);
+                }
+
             }
             return gamesList;
         }
@@ -81,6 +85,11 @@ namespace MazeWebServer.Models
             {
                 return null;
             }
+        }
+
+        public void Close(string gameToBeDeleted)
+        {
+            mpDB.Remove(gameToBeDeleted);
         }
     }
 }
