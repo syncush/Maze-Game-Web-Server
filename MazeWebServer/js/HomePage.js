@@ -21,7 +21,7 @@
             }
         }
 
-    }, 2000);
+    }, 1000);
     $("#regist").on("click", function () {
         if (!isLogged) {
             MoveForm("Register.html");

@@ -159,7 +159,7 @@
                     mult.server.moveAction(direction);
                     setTimeout(function () { mult.server.close($("#login").html()); }, 400);
                 }
-                if (shouldNotify == true) {
+                else (shouldNotify == true) {
                     mult.server.moveAction(direction);
                 }
             }

@@ -35,7 +35,7 @@ namespace MazeWebServer.Models
                 {
                     ds = new DataSet();
                     dataTable = new DataTable("Users");
-                    con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\sync\Source\Repos\WebServer\MazeWebServer\App_Data\MazeGameDB.mdb");
+                    con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\MazeGameDB.mdb");
                     dCommand = new OleDbCommand("Select * from Users", con);
                     adapter = new OleDbDataAdapter(dCommand);
                     adapter.Fill(dataTable);
@@ -70,7 +70,7 @@ namespace MazeWebServer.Models
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.CommandText = String.Format("INSERT INTO  Users ([Username], [Password], [Wins], [Loses], [Email]) VALUES ({0}, {1},{2},{3},{4})",
                     "'"+user.UserName+"'", "'" + user.Password+"'", 0, 0, "'" +user.Email+"'");
-                cmd.Connection = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\sync\Source\Repos\WebServer\MazeWebServer\App_Data\MazeGameDB.mdb");
+                cmd.Connection = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\MazeGameDB.mdb");
 
                 cmd.Connection.Open();
                 cmd.ExecuteNonQuery();

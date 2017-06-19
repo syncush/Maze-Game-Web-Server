@@ -121,6 +121,9 @@
     <Content Include="images\maze.png" />
     <Content Include="images\mazeGame.png" />
     <Content Include="images\player.png" />
+    <Content Include="js\css\index.css" />
+    <Content Include="js\css\Login.css" />
+    <Content Include="js\css\MainPage.css" />
     <Content Include="js\css\RegisterCSS.css" />
     <Content Include="mainPage.html" />
     <Content Include="js\calendarview.js" />
@@ -143,7 +146,6 @@
     <Content Include="js\vendor\json2.js" />
     <Content Include="Login.html" />
     <Content Include="MultiPlayer.html" />
-    <Content Include="RankTable.html" />
     <Content Include="Register.html" />
     <Content Include="App_Data\MazeGameDB.ldb" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />

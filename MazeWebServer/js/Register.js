@@ -19,8 +19,9 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data) {
-                    alert("Welcome! " + name  + "\n Page will now redirect!");
-                    $(location).attr("href", "index.html");
+                    alert("Welcome! " + name + "\n Page will now redirect!");
+                    sessionStorage.setItem('user', userLoginJson.UserName);
+                    $("#palapa").load("mainPage.html");
 
                 },
                 error: function(xhr, textStatus, errorThrown) {
