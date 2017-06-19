@@ -110,6 +110,7 @@
     <Content Include="App_Data\MazeGameDB.mdb" />
     <Content Include="Global.asax" />
     <Content Include="images\doge.jpg" />
+    <Content Include="images\dogoSettings.jpg" />
     <Content Include="images\regist.jpg" />
     <Content Include="index.html" />
     <Content Include="images\control.jpg" />
@@ -125,6 +126,7 @@
     <Content Include="js\css\Login.css" />
     <Content Include="js\css\MainPage.css" />
     <Content Include="js\css\RegisterCSS.css" />
+    <Content Include="js\css\Settings.css" />
     <Content Include="mainPage.html" />
     <Content Include="js\calendarview.js" />
     <Content Include="js\css\calendarview.css" />

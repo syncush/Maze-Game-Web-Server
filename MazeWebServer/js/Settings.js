@@ -3,7 +3,7 @@
         $("#Rows").val(localStorage.getItem("Rowz"));
         $("#Cols").val(localStorage.getItem("Colsz"));
     });
-    
+    $('#back').css('background-image', 'url(' + "/images/dogoSettings.jpg" + ')');
     $("#settForm").on("submit", function(e) {
         e.preventDefault();
         var valueRows = $("#Rows").val();
