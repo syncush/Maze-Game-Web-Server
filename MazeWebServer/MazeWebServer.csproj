@@ -130,8 +130,10 @@
     <Content Include="js\css\index.css" />
     <Content Include="js\css\Login.css" />
     <Content Include="js\css\MainPage.css" />
+    <Content Include="js\css\RankTable.css" />
     <Content Include="js\css\RegisterCSS.css" />
     <Content Include="js\css\Settings.css" />
+    <Content Include="js\RankTable.js" />
     <Content Include="mainPage.html" />
     <Content Include="js\calendarview.js" />
     <Content Include="js\css\calendarview.css" />
@@ -153,6 +155,7 @@
     <Content Include="js\vendor\json2.js" />
     <Content Include="Login.html" />
     <Content Include="MultiPlayer.html" />
+    <Content Include="RankTable.html" />
     <Content Include="Register.html" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />

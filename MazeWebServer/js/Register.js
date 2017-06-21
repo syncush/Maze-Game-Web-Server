@@ -1,5 +1,4 @@
 ﻿jQuery(function ($) {
-
     $("#registForm").on("submit", function (e) {
         e.preventDefault();
         var name = $("#input_1").val();
@@ -25,7 +24,6 @@
 
                 },
                 error: function(xhr, textStatus, errorThrown) {
-
                     alert("Failed to sign-in, please try again * sad face * !");
                 }
             });
