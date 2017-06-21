@@ -1,4 +1,4 @@
-namespace MazeWebServer.Migrations
+﻿namespace MazeWebServer.Migrations
 {
     using System;
     using System.Data.Entity;

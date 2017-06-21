@@ -1,3 +1,8 @@
 ﻿table, th, td {
-    border: 1px solid black;
+    color: #FFFFFF;
+    border-color: white;
+}
+
+.abale {
+    height: 800px;
 }

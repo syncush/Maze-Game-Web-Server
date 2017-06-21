@@ -1,5 +1,5 @@
 ﻿jQuery(function ($) {
-    $('#back').css('background-image', 'url(' + "/images/dogorank.png" + ')');
+    $('#piepiepie').css('background-image', 'url(' + "/images/dogorank.png" + ')');
     $.ajax({
         type: "Post",
         url: "/api/User/GetRankTable",
