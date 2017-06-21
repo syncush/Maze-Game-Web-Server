@@ -5,59 +5,56 @@
     <script src="js/Singleplayer.js"></script>
 </head>
 <body>
-<br/>
-<br/>
-<br/>
+    <br />
+    <br />
+    <br />
     <div id="boardush">
         <table>
             <tr>
                 <th>
-                    <form id="playForm">
-                        <div>
+                    <form id="playForm" class="col-sm-offset-2">
+                        <div class="form-group">
                             <label>
                                 <b>Name</b>
                             </label>
-                            <input type="text" placeholder="Enter Maze Name" name="Name" required>
+                            <input type="text" class="form-control" placeholder="Enter Maze Name" name="Name" required>
                         </div>
-                        <div>
+                        <div class="form-group">
                             <label>
                                 <b>Rows</b>
                             </label>
-                            <input type="text" placeholder="Enter Rows" name="Rows" required>
+                            <input type="text" class="form-control" placeholder="Enter Rows" name="Rows" required>
                         </div>
-                        <div>
+                        <div class="form-group">
                             <label>
                                 <b>Cols</b>
                             </label>
-                            <input type="text" placeholder="Enter Cols" name="Cols" required>
+                            <input type="text" class="form-control" placeholder="Enter Cols" name="Cols" required>
                         </div>
-
-                        <div>
+                        <div class="form-group">
                             <label></label>
-                            <button id="playButt" type="submit"> Play</button>
+                            <button id="playButt" class="form-control" type="submit"> Play</button>
                             <label></label>
-                            
+                            <button id="restartButt" class="form-control" type="button">Restart</button>
                         </div>
                     </form>
                     <br />
-                    <form id="solveForm">
-                        <select>
+                    <form id="solveForm" class="col-sm-offset-2">
+                        <select class="form-control">
                             <option value="BFS">BFS</option>
                             <option value="DFS">DFS</option>
                         </select>
                         <br />
-                        <button id="solveButt" type="submit">Solve</button>
+                        <button class="form-control" id="solveButt" type="submit">Solve</button>
                     </form>
                 </th>
-                <th><div><canvas id="mazeCanvas" width="300" height="300" style="border:2px black solid"></canvas></div></th>
+                <th class="col-sm-offset-10"><div><canvas id="mazeCanvas" width="300" height="300" style="margin:45px;border:2px black solid"></canvas></div></th>
             </tr>
         </table>
-        <button id="restartButt" type="button">Restart</button>
-</div> 
-<div><iframe width="560" height="315" src="https://www.youtube.com/embed/GNpXogUiYnU" frameborder="1" allowfullscreen></iframe></div>
-<span style="display:none;">
+    </div>
+    <span style="display:none;">
         <img id="playerImage" src="images/player.png" />
-        <img id="endImage" src="images/end.jpeg" /> 
+        <img id="endImage" src="images/end.jpeg" />
     </span>
 </body>
 </html>

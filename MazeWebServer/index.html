@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Maze Game</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="Scripts/jquery-3.1.1.js"></script>
@@ -16,24 +16,19 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <a class="navbar-brand" href="#"><img src="images/maze.png" /></a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li id="HomePage" class="active"><a>Home</a></li>
-                    <li><a id="Singleplayer">SinglePlayer</a></li>
-                    <li><a id="Multiplayer">MultiPlayer</a></li>
-                    <li><a id="settings">Settings</a></li>
-                    <li><a id="userRank">User Ranking</a></li>
+                    <li><a class="active" id="Singleplayer">SinglePlayer</a></li>
+                    <li><a class="active" id="Multiplayer">MultiPlayer</a></li>
+                    <li><a class="active" id="settings">Settings</a></li>
+                    <li><a class="active" id="userRank">User Ranking</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a><span class="glyphicon glyphicon-log-in"></span><div id="login">Login</div></a></li>
-                    <li><a><span class="glyphicon glyphicon-user"></span><div id="regist">Register</div></a></li>
+                    <li><a><span class="glyphicon glyphicon-log-in active"></span><div id="login">Login</div></a></li>
+                    <li><a><span class="glyphicon glyphicon-user active"></span><div id="regist">Register</div></a></li>
                 </ul>
             </div>
         </div>
