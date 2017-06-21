@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using MazeWebServer.Models;
+using Newtonsoft.Json.Linq;
 using MazeWebServer.Entitys;
 
 namespace MazeWebServer.Controllers
@@ -44,7 +45,6 @@ namespace MazeWebServer.Controllers
             {
                 return BadRequest("{}");
             }
-
         }
         /// <summary>
         /// Logins the specified user.
@@ -56,8 +56,6 @@ namespace MazeWebServer.Controllers
         public IHttpActionResult Login(UserLoginData user)
         {
             User temp = db.Users.Find(user.UserName);
-
-          
             if (temp != null && user.Password == temp.Password)
             {
                 return Ok("{}");
@@ -66,6 +64,21 @@ namespace MazeWebServer.Controllers
             {
                 return BadRequest("{}");
             }
+        }
+
+        [HttpPost]
+        [Route("api/User/GetRankTable")]
+        public IHttpActionResult GetRankTable()
+        {
+            List<UserRankTableData> tableData = new List<UserRankTableData>();
+            IQueryable<User> qryResult = db.Users.OrderByDescending(user => user.Wins - user.Loses);
+            List<User> b = qryResult.ToList<User>();
+            JArray array = new JArray();
+            foreach(User user in b)
+            {
+                array.Add(JObject.FromObject(user));
+            }
+            return Ok(array);
         }
 
         // GET: api/Users

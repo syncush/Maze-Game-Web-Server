@@ -54,5 +54,8 @@
     $("#HomePage").on("click", function () {
             MoveForm("index.html");
     });
+    $("#userRank").on("click", function () {
+        MoveForm("RankTable.html");
+    });
     $("#palapa").load("mainPage.html");
 });
