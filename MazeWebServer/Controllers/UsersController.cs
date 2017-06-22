@@ -66,6 +66,16 @@ namespace MazeWebServer.Controllers
             }
         }
 
+        public void UpdateWin(string winner, string loser) {
+            User user = db.Users.Find(winner);
+            User loserUser = db.Users.Find(loser);
+            if (user != null && loserUser != null) {
+                user.Wins += 1;
+                loserUser.Loses += 1;
+                db.SaveChanges();
+            }
+        }
+       
         [HttpPost]
         [Route("api/User/GetRankTable")]
         public IHttpActionResult GetRankTable()
