@@ -142,6 +142,7 @@
     <Content Include="js\css\RankTable.css" />
     <Content Include="js\css\RegisterCSS.css" />
     <Content Include="js\css\Settings.css" />
+    <Content Include="js\css\Singleplayer.css" />
     <Content Include="js\css\temp.css" />
     <Content Include="js\MainPage.js" />
     <Content Include="js\RankTable.js" />

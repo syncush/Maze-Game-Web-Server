@@ -25,6 +25,7 @@
 
     $("#playForm").on("submit", function (e) {
         e.preventDefault();
+        $("#loadinggif").addClass("loader");
         var mazeData = {
             Name: $("#playForm input[name = 'Name']").val(),
             Rows: $("#playForm input[name= 'Rows']").val(),
@@ -52,11 +53,13 @@
                 cellHeight = canv.height / rows;
                 $("#mazeCanvas").drawMaze("mazeCanvas", data, endGameImg, endXaxis, endYaxis, playerImg, currX, currY);
                 isAbleToMove = true;
+                $(".loader").fadeOut();
 
             },
             error: function (xhr, textStatus, errorThrown) {
 
-                return false;
+                alert("Failed to create game!");
+                $(".loader").fadeOut();
             }
         });
     });
