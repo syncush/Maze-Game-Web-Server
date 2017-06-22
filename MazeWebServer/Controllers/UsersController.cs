@@ -16,7 +16,7 @@ namespace MazeWebServer.Controllers
 {
     public class UsersController : ApiController
     {
-        private MazeWebServerContext db = new MazeWebServerContext();
+        public MazeWebServerContext db = new MazeWebServerContext();
 
       
         /// <summary>
@@ -38,7 +38,6 @@ namespace MazeWebServer.Controllers
             if (db.Users.Find(user.UserName) == null)
             {
                 db.Users.Add(temp);
-                db.SaveChanges();
                 return Ok("{}");
             }
             else
@@ -63,16 +62,6 @@ namespace MazeWebServer.Controllers
             else
             {
                 return BadRequest("{}");
-            }
-        }
-
-        public void UpdateWin(string winner, string loser) {
-            User user = db.Users.Find(winner);
-            User loserUser = db.Users.Find(loser);
-            if (user != null && loserUser != null) {
-                user.Wins += 1;
-                loserUser.Loses += 1;
-                db.SaveChanges();
             }
         }
        
@@ -110,6 +99,37 @@ namespace MazeWebServer.Controllers
             return Ok(user);
         }
 
+        /// <summary>
+        /// Updates the win.
+        /// </summary>
+        /// <param name="winner">The winner.</param>
+        [HttpPost]
+        [Route("api/User/UpdateWin")]
+        public void UpdateWin(UpdateStatusWinLose winner)
+        {
+            User user = db.Users.Find(winner.User);
+            if (user != null)
+            {
+                user.Wins += 1;
+                db.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// Updates the lose.
+        /// </summary>
+        /// <param name="loser">The loser.</param>
+        [HttpPost]
+        [Route("api/User/UpdateLose")]
+        public void UpdateLose(UpdateStatusWinLose loser)
+        {
+            User user = db.Users.Find(loser.User);
+            if (user != null)
+            {
+                user.Loses += 1;
+                db.SaveChanges();
+            }
+        }
         // PUT: api/Users/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUser(string id, User user)

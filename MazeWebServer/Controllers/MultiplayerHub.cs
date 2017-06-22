@@ -25,9 +25,22 @@ namespace MazeWebServer.Controllers
     [HubName("multiplayerHub")]
     public class MultiplayerHub : Hub
     {
+        /// <summary>
+        /// The connected users
+        /// </summary>
         public static ConcurrentDictionary<String, GameInfo> connectedUsers = new ConcurrentDictionary<string, GameInfo>();
+        /// <summary>
+        /// The mp model
+        /// </summary>
         public static MultiplayerModel mpModel = new MultiplayerModel();
 
+
+        /// <summary>
+        /// Starts the specified maze name.
+        /// </summary>
+        /// <param name="mazeName">Name of the maze.</param>
+        /// <param name="rows">The rows.</param>
+        /// <param name="cols">The cols.</param>
         public void Start(string mazeName, int rows, int cols)
         {
             Maze maze = mpModel.Start(mazeName, rows, cols);
@@ -40,6 +53,10 @@ namespace MazeWebServer.Controllers
             }
         }
 
+        /// <summary>
+        /// Joins the specified maze name.
+        /// </summary>
+        /// <param name="mazeName">Name of the maze.</param>
         public void Join(string mazeName)
         {
             Maze maze = mpModel.Join(mazeName);
@@ -52,6 +69,10 @@ namespace MazeWebServer.Controllers
             }
         }
 
+        /// <summary>
+        /// Moves the action.
+        /// </summary>
+        /// <param name="direction">The direction.</param>
         public void MoveAction(string direction)
         {
             string otherPlayer = "";
@@ -76,6 +97,11 @@ namespace MazeWebServer.Controllers
 
         }
 
+
+        /// <summary>
+        /// Closes the specified winner player.
+        /// </summary>
+        /// <param name="winnerPlayer">The winner player.</param>
         public void Close(string winnerPlayer)
         {
             string otherPlayer = "";

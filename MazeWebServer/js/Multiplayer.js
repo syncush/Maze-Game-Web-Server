@@ -63,7 +63,23 @@
     mult.client.close = function (direction) {
         alert("You Lost!");
         isAbleToMove = false;
-        $("#palapa").load("index.html");
+        var pieData2 = {
+            User: $("#login").html()
+        };
+        $.ajax({
+            type: "Post",
+            url: "/api/User/UpdateLose",
+            data: JSON.stringify(pieData2),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+            },
+            error: function (xhr, textStatus, errorThrown) {
+
+                alert("Failed to update lose , please contact an admin.");
+            }
+        });
+        //$("#palapa").load("index.html");
     };
 
     mult.client.gameStarted = function (data) {
@@ -94,7 +110,7 @@
     };
 
     $.connection.hub.start().done(function () {
-        function movePlayer(boardName, posX, poxY, direction, shouldNotify) {
+        function movePlayer(boardName, direction, shouldNotify) {
             var myCan = document.getElementById(boardName);
             var myCanFX = myCan.getContext("2d");
             if (isAbleToMove === true) {
@@ -102,64 +118,81 @@
                 // Handle the arrow keys
                 switch (direction) {
                     case "left":
-                        k = posX * rows + (positionY - 1);
-                        if (posX >= 0 && posX < rows && positionY - 1 < cols && positionY >= 0 && maze[k] == 0) {
-                            myCanFX.fillRect(cellWidth * positionY, cellHeight * posX, cellWidth, cellHeight);
+                        k = positionX * rows + (positionY - 1);
+                        if (positionX >= 0 && positionX < rows && positionY - 1 < cols && positionY >= 0 && maze[k] == 0) {
+                            myCanFX.fillRect(cellWidth * positionY, cellHeight * positionX, cellWidth, cellHeight);
                             positionY = positionY - 1;
                         }
                         break;
                     case "up":
-                        k = (posX - 1) * rows + (positionY);
+                        k = (positionX - 1) * rows + (positionY);
 
-                        if (posX - 1 >= 0 &&
-                            posX - 1 < rows &&
+                        if (positionX - 1 >= 0 &&
+                            positionX - 1 < rows &&
                             positionY < cols &&
                             positionY >= 0 &&
                             maze[k] == 0) {
 
-                            myCanFX.fillRect(cellWidth * positionY, cellHeight * posX, cellWidth, cellHeight);
-                            posX = posX - 1;
+                            myCanFX.fillRect(cellWidth * positionY, cellHeight * positionX, cellWidth, cellHeight);
+                            positionX = positionX - 1;
 
 
                         }
                         break;
                     case "right":
-                        k = posX * rows + (positionY + 1);
-                        if (posX >= 0 &&
-                            posX < rows &&
+                        k = positionX * rows + (positionY + 1);
+                        if (positionX >= 0 &&
+                            positionX < rows &&
                             positionY + 1 < cols &&
                             positionY + 1 >= 0 &&
                             maze[k] == 0) {
-                            myCanFX.fillRect(cellWidth * positionY, cellHeight * posX, cellWidth, cellHeight);
+                            myCanFX.fillRect(cellWidth * positionY, cellHeight * positionX, cellWidth, cellHeight);
                             positionY = positionY + 1;
 
 
                         }
                         break;
                     case "down":
-                        k = (posX + 1) * rows + (positionY);
+                        k = (positionX + 1) * rows + (positionY);
 
-                        if (posX + 1 >= 0 &&
-                            posX + 1 < rows &&
+                        if (positionX + 1 >= 0 &&
+                            positionX + 1 < rows &&
                             positionY < cols &&
                             positionY >= 0 &&
                             maze[k] == 0) {
 
-                            myCanFX.fillRect(cellWidth * positionY, cellHeight * posX, cellWidth, cellHeight);
-                            posX = posX + 1;
+                            myCanFX.fillRect(cellWidth * positionY, cellHeight * positionX, cellWidth, cellHeight);
+                            positionX = positionX + 1;
 
                         }
                         break;
                 }
-                myCanFX.drawImage(myImg, positionY * cellWidth, posX * cellHeight, cellWidth, cellHeight);
+                myCanFX.drawImage(myImg, positionY * cellWidth, positionX * cellHeight, cellWidth, cellHeight);
                 myCanFX.drawImage(exitImg, endYaxis * cellWidth, endXaxis * cellHeight, cellWidth, cellHeight);
-                if (posX == endXaxis && positionY == endYaxis) {
+                if (positionX == endXaxis && positionY == endYaxis) {
                     alert("You won!");
                     isAbleToMove = false;
                     mult.server.moveAction(direction);
+                    var pieData = {
+                        User: $("#login").html()
+                    };
+                    $.ajax({
+                        type: "Post",
+                        url: "/api/User/UpdateWin",
+                        data: JSON.stringify(pieData),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (data) {
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+
+                            alert("Failed to update win , please contact an admin.");
+                        }
+                    });
                     setTimeout(function () { mult.server.close($("#login").html()); }, 400);
                 }
-                else (shouldNotify == true) {
+                else {
+                    shouldNotify = true;
                     mult.server.moveAction(direction);
                 }
             }
@@ -181,7 +214,7 @@
                 },
                 error: function (xhr, textStatus, errorThrown) {
 
-                    return false;
+                    alert("Failed to load games , sorry !");
                 }
             });
         });
@@ -205,25 +238,22 @@
         });
 
 
-
-
-
         $("body").on("keyup", function (e) {
             switch (e.which) {
                 case 37:
-                    movePlayer("mazeCanvas", positionX, positionY, "left", true);
+                    movePlayer("mazeCanvas", "left", true);
 
                     break;
                 case 38:
-                    movePlayer("mazeCanvas", positionX, positionY, "up", true);
+                    movePlayer("mazeCanvas", "up", true);
 
                     break;
                 case 39:
-                    movePlayer("mazeCanvas", positionX, positionY, "right", true);
+                    movePlayer("mazeCanvas", "right", true);
 
                     break;
                 case 40:
-                    movePlayer("mazeCanvas", positionX, positionY, "down", true);
+                    movePlayer("mazeCanvas", "down", true);
 
                     break;
             }
