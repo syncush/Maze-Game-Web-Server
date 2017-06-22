@@ -24,6 +24,7 @@
                 rank.innerHTML = i + 1;
                 i++;
             }
+            $(".loader").fadeOut();
         },
         Error: function (data) {
             alert("fail in loading table");

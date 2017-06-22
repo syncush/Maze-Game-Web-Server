@@ -3,6 +3,15 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+.loader {
+    position: fixed;
+    z-index: 1000;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: 100%;
+    background: rgba( 255, 255, 255, .8 ) url('') 50% 50% no-repeat;
+}
 #registForm {
     opacity: 0.9;
     margin: 0 auto;
