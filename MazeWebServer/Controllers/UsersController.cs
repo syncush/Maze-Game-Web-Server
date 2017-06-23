@@ -18,7 +18,7 @@ namespace MazeWebServer.Controllers
     {
         public MazeWebServerContext db = new MazeWebServerContext();
 
-      
+
         /// <summary>
         /// Registers the specified user.
         /// </summary>
@@ -38,6 +38,7 @@ namespace MazeWebServer.Controllers
             if (db.Users.Find(user.UserName) == null)
             {
                 db.Users.Add(temp);
+                db.SaveChanges();
                 return Ok("{}");
             }
             else
@@ -64,7 +65,7 @@ namespace MazeWebServer.Controllers
                 return BadRequest("{}");
             }
         }
-       
+
         [HttpPost]
         [Route("api/User/GetRankTable")]
         public IHttpActionResult GetRankTable()
@@ -73,7 +74,7 @@ namespace MazeWebServer.Controllers
             IQueryable<User> qryResult = db.Users.OrderByDescending(user => user.Wins - user.Loses);
             List<User> b = qryResult.ToList<User>();
             JArray array = new JArray();
-            foreach(User user in b)
+            foreach (User user in b)
             {
                 array.Add(JObject.FromObject(user));
             }

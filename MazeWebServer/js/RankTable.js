@@ -4,6 +4,7 @@
         type: "Post",
         url: "/api/User/GetRankTable",
         success: function (data) {
+            $("#tblRank  tr:not('.active')").empty();
             var table = document.getElementById("tblRank");
             var row;
             var usernameCell;
