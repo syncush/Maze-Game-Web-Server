@@ -1,0 +1,338 @@
+commit ade37bc3bcfdce1aab41c7060e8850839c5ae7d8
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Fri Jun 23 11:53:53 2017 +0300
+
+    Fixed multi and stuff
+
+commit 4e79c4c887f5fb4eaf6bee3a5f97257db64b2d13
+Author: sync <danielhermonsync@gmail.com>
+Date:   Fri Jun 23 00:50:19 2017 +0300
+
+    sadsad
+
+commit b91e2480c24244740f22ee3bb60d932f573cb250
+Author: sync <danielhermonsync@gmail.com>
+Date:   Thu Jun 22 15:36:15 2017 +0300
+
+    win lose support
+
+commit d61af6716b78acebf4053f5415deb1194a1bee70
+Author: sync <danielhermonsync@gmail.com>
+Date:   Thu Jun 22 10:39:09 2017 +0300
+
+    loading.
+
+commit 17ba63887d1cae280c0ba363b3c67d37f80c25b6
+Author: sync <danielhermonsync@gmail.com>
+Date:   Thu Jun 22 10:30:07 2017 +0300
+
+    Ranking table loading.
+
+commit 9d5b203ec3cc9b79eec7821bc7b904894be6712e
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Wed Jun 21 23:45:37 2017 +0300
+
+    sdfsd
+
+commit a51c4d51596cc2bcc8ac4cd5eeba77901ac170ad
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Wed Jun 21 23:41:43 2017 +0300
+
+    sdfsdfsd
+
+commit 5a2a3a7f1ae12d88d9fdf10cb2e295ca9e71411d
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Wed Jun 21 18:09:50 2017 +0300
+
+    dogo added
+
+commit b93bb0aefacd03d9d9dd26c8d59c597765f72ac1
+Author: sync <danielhermonsync@gmail.com>
+Date:   Wed Jun 21 17:40:51 2017 +0300
+
+    now with ranking table.
+
+commit 0d10347fd6dc7d17f2219c1e820c7ef01fa0e678
+Author: sync <danielhermonsync@gmail.com>
+Date:   Wed Jun 21 10:20:19 2017 +0300
+
+    partial integration
+
+commit 13eed4e627391e4e9021d61b0593fd446b672087
+Author: sync <danielhermonsync@gmail.com>
+Date:   Mon Jun 19 15:51:50 2017 +0300
+
+    Moved to mdf
+
+commit 9e667cda503dad832669b0b14432b15c4c3b29b8
+Author: sync <danielhermonsync@gmail.com>
+Date:   Mon Jun 19 15:09:04 2017 +0300
+
+    push
+
+commit ddb238136a99b1a927809d47d5f463838936c578
+Merge: 63bff28 854818a
+Author: sync <danielhermonsync@gmail.com>
+Date:   Mon Jun 19 14:28:27 2017 +0300
+
+    dfs
+
+commit 63bff28da992952929cc8cdaf88dde72491da5f0
+Author: sync <danielhermonsync@gmail.com>
+Date:   Mon Jun 19 14:27:40 2017 +0300
+
+    Fixed little bugs
+
+commit 854818ad281a8de0ed0506cf0ab20d7975c615bd
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Sun Jun 18 23:59:05 2017 +0300
+
+    Push
+
+commit 57095918a204b94619b107540489b22f3febde30
+Author: sync <danielhermonsync@gmail.com>
+Date:   Sun Jun 18 16:37:31 2017 +0300
+
+    play is working!
+
+commit 1391e9bd18fcb276598b73ab5f9bbba339c4acc9
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Sat Jun 17 22:25:00 2017 +0300
+
+    pushon
+
+commit 826ba908b261cac1d52bd4bcff5318426ce83b74
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Sat Jun 17 12:16:02 2017 +0300
+
+    quick push
+
+commit a474d5010f9e0fdc3325fc7d5cb1c79bee49e0b9
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Thu Jun 15 21:43:46 2017 +0300
+
+    Login works
+
+commit 5bed0cd79fed13a8ab440cee7ee77a959ea56722
+Merge: 74d6e0d c6a3d08
+Author: sync <danielhermonsync@gmail.com>
+Date:   Thu Jun 15 16:37:02 2017 +0300
+
+    123
+
+commit 74d6e0d01859692200aae9ff3e23ac045d275885
+Author: sync <danielhermonsync@gmail.com>
+Date:   Thu Jun 15 15:54:03 2017 +0300
+
+    sdfs
+
+commit c6a3d086a738e60a363cdd9080aaaf29838012b5
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Tue Jun 13 19:32:29 2017 +0300
+
+    kujg
+
+commit e181d5afa6c52bc32058fd25031f66269b4490e5
+Author: sync <danielhermonsync@gmail.com>
+Date:   Tue Jun 13 15:13:54 2017 +0300
+
+    pie
+
+commit 7098424ec514a03d960519a77400ee3bfc0dc5ef
+Author: sync <danielhermonsync@gmail.com>
+Date:   Tue Jun 13 14:45:48 2017 +0300
+
+    OnePage
+
+commit 50cbdf224726611061dfb50f67ab550520d1c6f4
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Mon Jun 12 23:35:33 2017 +0300
+
+    lol
+
+commit ed128c3286c2349d17d8aaedb1dad7d671cb2d00
+Merge: 527d7e1 013a8e1
+Author: sync <danielhermonsync@gmail.com>
+Date:   Mon Jun 12 16:40:51 2017 +0300
+
+    Merge branch 'master' of https://github.com/syncush/WebServer
+
+commit 527d7e17f474453514148ea41a5e526c255d3ddb
+Author: sync <danielhermonsync@gmail.com>
+Date:   Mon Jun 12 16:40:28 2017 +0300
+
+    87878
+
+commit 84ac2c80e95fb2035bb42d0198d2c02520e74e30
+Author: sync <danielhermonsync@gmail.com>
+Date:   Mon Jun 12 10:54:04 2017 +0300
+
+    Moving to .net frame work
+
+commit 013a8e1ccb95668e530c8bb8bbbef9eb0b158986
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Sun Jun 11 20:41:06 2017 +0300
+
+    כ
+
+commit fa4b919abf8defd1798a50ea0832d41a99822a65
+Merge: 325174d 1fe6028
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Sun Jun 11 20:25:19 2017 +0300
+
+    sd
+
+commit 325174d2e84c06e77edab916b2b0754bfad61970
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Sun Jun 11 20:24:38 2017 +0300
+
+    ds
+
+commit 1fe602828c54b4bc8fb720470e0f7100d2020461
+Merge: 0a44535 0a796f8
+Author: yossi mandil <yossimandil@gmail.com>
+Date:   Sun Jun 11 19:58:47 2017 +0300
+
+    Merge branch 'master' of https://github.com/syncush/WebServer
+
+commit 0a44535baa2ab4215dee3c60fa16cb5da4a1a4dc
+Author: yossi mandil <yossimandil@gmail.com>
+Date:   Sun Jun 11 19:57:56 2017 +0300
+
+    kj
+
+commit 0a796f836878ba42c8a9724ed085a4dd98959cab
+Author: sync <danielhermonsync@gmail.com>
+Date:   Sun Jun 11 15:17:51 2017 +0300
+
+    Better update
+
+commit 3629726445542fd96cb6e7ed1e6e19ff75563ffe
+Merge: 3751ea2 8bed5d0
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Sat Jun 10 16:48:27 2017 +0300
+
+    564
+
+commit 8bed5d0566d8136ace8cfa142aa7b300bbdd6ad7
+Merge: 7dfdc8a a546bfd
+Author: sync <danielhermonsync@gmail.com>
+Date:   Sat Jun 10 16:46:21 2017 +0300
+
+    fd
+
+commit 7dfdc8a450711096ea41f7fa6e71112d05980440
+Author: sync <danielhermonsync@gmail.com>
+Date:   Sat Jun 10 16:42:33 2017 +0300
+
+    Data connection worked!
+
+commit 3751ea2c5848b5bec0b21d7365ca5417a03bb415
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Sat Jun 10 16:13:06 2017 +0300
+
+    dsdf
+
+commit fc1a1a850ae5104d3164070df9f3a2d73564e0fa
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Sat Jun 10 16:01:50 2017 +0300
+
+    Revert "Login works , register works, handles combo box selection."
+    
+    This reverts commit 9c937e159db54c6387dca9572f84fa74e59d5834.
+
+commit a546bfdf0d2c640b14296f17973c1dd1bc447937
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Sat Jun 10 16:01:35 2017 +0300
+
+    sdf
+
+commit 9c937e159db54c6387dca9572f84fa74e59d5834
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Fri Jun 9 19:13:30 2017 +0300
+
+    Login works , register works, handles combo box selection.
+
+commit e4e13978c8e28488e0e566713fbb063817733831
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Fri Jun 9 14:21:13 2017 +0300
+
+    Register is perfect , now with redirection  to index.html
+
+commit be49941fa09a72f431737734ceb3bb016b3eca11
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Fri Jun 9 13:40:14 2017 +0300
+
+    push
+
+commit 7473b1ee0938ddc74934f21457e49707454ea011
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Fri Jun 9 13:30:54 2017 +0300
+
+    encryption works!
+
+commit e97aceee3f7f7a101ef81e17013a8ddeaea42545
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Thu Jun 8 23:41:25 2017 +0300
+
+    Push
+
+commit 1fb44d5d4c497ce777a8ff972f147abb0ef40f82
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Thu Jun 8 19:56:56 2017 +0300
+
+    Working solve.
+
+commit 36157bdbf92cd19248deb5d2a843e046848a5e40
+Author: sync <danielhermonsync@gmail.com>
+Date:   Thu Jun 8 17:36:07 2017 +0300
+
+    zxczxc
+
+commit 16f5ae4da856c27d0c906169c7f43f38f0db4842
+Author: sync <danielhermonsync@gmail.com>
+Date:   Thu Jun 8 09:44:55 2017 +0300
+
+    adding solution
+
+commit 1526516aef0c0954aefc8b01077c92a6c68a8053
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Wed Jun 7 21:36:55 2017 +0300
+
+    Now single player works , no solve yet , coming soon , be ready.
+
+commit 53dfc2962157a32c912e07cbc7d18241a923ba4a
+Author: Daniel Hermon <danielhermonsync@gmail.com>
+Date:   Wed Jun 7 19:16:33 2017 +0300
+
+    'קג
+
+commit 21ec1e579e0b3b34cd00618e4ddce63f007961d9
+Author: sync <danielhermonsync@gmail.com>
+Date:   Wed Jun 7 14:46:23 2017 +0300
+
+    single player works but i still havent won my nigger
+
+commit 6d18ca6b965f4047f0544fba85ff3876e0613ef9
+Author: sync <danielhermonsync@gmail.com>
+Date:   Wed Jun 7 13:45:24 2017 +0300
+
+    wdasdasd
+
+commit 9cc40e3bb4e3bfe2d9d9523f878862af9bdf4aec
+Author: sync <danielhermonsync@gmail.com>
+Date:   Wed Jun 7 10:06:24 2017 +0300
+
+    Now with IIS
+
+commit a4d2245f89a71d017dbed1edbceb8714b16fdbd7
+Author: sync <danielhermonsync@gmail.com>
+Date:   Wed Jun 7 09:35:45 2017 +0300
+
+    Add project files.
+
+commit 5ebd417240c0a89b89460817420a50f38928466f
+Author: sync <danielhermonsync@gmail.com>
+Date:   Wed Jun 7 09:35:41 2017 +0300
+
+    Add .gitignore and .gitattributes.

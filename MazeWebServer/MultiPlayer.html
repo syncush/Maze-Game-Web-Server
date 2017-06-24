@@ -7,6 +7,7 @@
     <script src="signalr/hubs"></script>
     <script src="js/Multiplayer.js"></script>
     <script src="js/Plugin.MazeBoard.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
 </head>
 <body>
     <br />
@@ -15,32 +16,32 @@
         <table>
             <tr>
                 <th>
-                    <form id="playForm">
+                    <form id="playForm" class="glyphicon-baby-formula">
                         <br />
                         <select id="gamesList"></select>
                         <br />
-                        <button id="joinButt">Restart</button>
-                        <div>
+                        <button id="joinButt">Join</button>
+                        <div class="form-group">
                             <label>
                                 <b>Name</b>
                             </label>
-                            <input type="text" placeholder="Enter Maze Name" name="Name" required>
+                            <input class="form-control" type="text" placeholder="Enter Maze Name" name="Name" required>
                         </div>
-                        <div>
+                        <div class="form-group">
                             <label>
                                 <b>Rows</b>
                             </label>
-                            <input type="text" placeholder="Enter Rows" name="Rows" required>
+                            <input class="form-control" type="number" placeholder="Enter Rows" name="Rows" required>
                         </div>
-                        <div>
+                        <div class="form-group">
                             <label>
                                 <b>Cols</b>
                             </label>
-                            <input type="text" placeholder="Enter Cols" name="Cols" required>
+                            <input class="form-control" type="number" placeholder="Enter Cols" name="Cols" required>
                         </div>
-                        <div>
+                        <div class="form-group">
                             <label></label>
-                            <button id="startButt" type="submit">Start</button>
+                            <button class="form-control" id="startButt" type="submit">Start</button>
                             <label></label>
                         </div>
                     </form>
