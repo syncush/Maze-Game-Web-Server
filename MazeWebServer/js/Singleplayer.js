@@ -25,43 +25,49 @@
 
     $("#playForm").on("submit", function (e) {
         e.preventDefault();
-        $("#loadinggif").addClass("loader");
+
         var mazeData = {
             Name: $("#playForm input[name = 'Name']").val(),
             Rows: $("#playForm input[name= 'Rows']").val(),
             Cols: $("#playForm input[name= 'Cols']").val()
         };
-        $.ajax({
-            type: "Post",
-            url: "/api/GenerateMaze/Get",
-            data: JSON.stringify(mazeData),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                currX = data["Start"]["Row"];
-                currY = data["Start"]["Col"];
-                endXaxis = data["End"]["Row"];
-                endYaxis = data["End"]["Col"];
-                rows = data.Rows;
-                cols = data.Cols;
-                maze = data.Maze;
-                yolo = data;
-                var canv = document.getElementById('mazeCanvas');
-                canv.width = 50 * rows;
-                canv.height = 50 * cols;
-                cellWidth = canv.width / cols;
-                cellHeight = canv.height / rows;
-                $("#mazeCanvas").drawMaze("mazeCanvas", data, endGameImg, endXaxis, endYaxis, playerImg, currX, currY);
-                isAbleToMove = true;
-                $(".loader").fadeOut();
+        if (mazeData.Name == "" || mazeData.Rows <= 0 || mazeData.Cols <= 0) {
+            alert("Check parameter!");
+        } else {
+            $("#loadinggif").addClass("loader");
+            $.ajax({
+                type: "Post",
+                url: "/api/GenerateMaze/Get",
+                data: JSON.stringify(mazeData),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    currX = data["Start"]["Row"];
+                    currY = data["Start"]["Col"];
+                    endXaxis = data["End"]["Row"];
+                    endYaxis = data["End"]["Col"];
+                    rows = data.Rows;
+                    cols = data.Cols;
+                    maze = data.Maze;
+                    yolo = data;
+                    var canv = document.getElementById('mazeCanvas');
+                    canv.width = 50 * rows;
+                    canv.height = 50 * cols;
+                    cellWidth = canv.width / cols;
+                    cellHeight = canv.height / rows;
+                    $("#mazeCanvas").drawMaze("mazeCanvas", data, endGameImg, endXaxis, endYaxis, playerImg, currX, currY);
+                    isAbleToMove = true;
+                    $(".loader").fadeOut();
 
-            },
-            error: function (xhr, textStatus, errorThrown) {
+                },
+                error: function (xhr, textStatus, errorThrown) {
 
-                alert("Failed to create game!");
-                $(".loader").fadeOut();
-            }
-        });
+                    alert("Failed to create game!");
+                    $(".loader").fadeOut();
+                }
+            });
+        }
+
     });
     $("#restartButt").on("click",
         function () {

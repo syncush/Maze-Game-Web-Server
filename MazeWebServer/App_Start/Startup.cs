@@ -7,11 +7,18 @@ using Owin;
 [assembly: OwinStartup(typeof(MazeWebServer.Startup))]
 namespace MazeWebServer
 {
-        public class Startup
+    /// <summary>
+    /// 
+    /// </summary>
+    public class Startup
+    {
+        /// <summary>
+        /// Configurations the specified application.
+        /// </summary>
+        /// <param name="app">The application.</param>
+        public void Configuration(IAppBuilder app)
         {
-            public void Configuration(IAppBuilder app)
-            {
-                app.MapSignalR();
-            }
+            app.MapSignalR();
         }
+    }
 }

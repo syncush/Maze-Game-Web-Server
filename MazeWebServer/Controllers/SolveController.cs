@@ -6,22 +6,38 @@ using System.Web.Http;
 
 namespace MazeWebServer.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="System.Web.Http.ApiController" />
     public class SolveController : ApiController
     {
+        /// <summary>
+        /// The sm model
+        /// </summary>
         private SolveMazeModel smModel;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SolveController"/> class.
+        /// </summary>
         public SolveController()
         {
             this.smModel = new SolveMazeModel();
         }
+        /// <summary>
+        /// Gets the specified value.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
         [HttpPost]
         [Route("api/Solve/Get")]
         public IHttpActionResult Get(SolveParams value)
         {
             Algorithm algo = Algorithm.BFS;
-            if(value.AlgoSelector == 1)
+            if (value.AlgoSelector == 1)
             {
                 algo = Algorithm.BFS;
-            } else
+            }
+            else
             {
                 algo = Algorithm.DFS;
             }

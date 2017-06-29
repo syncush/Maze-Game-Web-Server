@@ -9,13 +9,24 @@ using Newtonsoft.Json.Linq;
 
 namespace MazeWebServer.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="System.Web.Http.ApiController" />
     public class ListMultiController : ApiController
     {
-        public static MultiplayerModel mpModel  = new MultiplayerModel(); 
+        /// <summary>
+        /// The mp model
+        /// </summary>
+        public static MultiplayerModel mpModel = new MultiplayerModel();
         public ListMultiController()
         {
 
         }
+        /// <summary>
+        /// Lists this instance.
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         [Route("api/ListMulti/List")]
         public IHttpActionResult List()
@@ -23,6 +34,6 @@ namespace MazeWebServer.Controllers
             List<string> temp = mpModel.ListAllGames();
             return Ok(JsonConvert.SerializeObject(temp, Formatting.Indented));
         }
-        
+
     }
 }

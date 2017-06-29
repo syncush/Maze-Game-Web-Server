@@ -17,8 +17,6 @@ namespace MazeWebServer.Controllers
     public class UsersController : ApiController
     {
         public MazeWebServerContext db = new MazeWebServerContext();
-
-
         /// <summary>
         /// Registers the specified user.
         /// </summary>
@@ -132,6 +130,12 @@ namespace MazeWebServer.Controllers
             }
         }
         // PUT: api/Users/5
+        /// <summary>
+        /// Puts the user.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="user">The user.</param>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUser(string id, User user)
         {
@@ -167,6 +171,11 @@ namespace MazeWebServer.Controllers
         }
 
         // POST: api/Users
+        /// <summary>
+        /// Posts the user.
+        /// </summary>
+        /// <param name="user">The user.</param>
+        /// <returns></returns>
         [ResponseType(typeof(User))]
         public IHttpActionResult PostUser(User user)
         {
@@ -212,6 +221,10 @@ namespace MazeWebServer.Controllers
             return Ok(user);
         }
 
+        /// <summary>
+        /// Releases the unmanaged resources that are used by the object and, optionally, releases the managed resources.
+        /// </summary>
+        /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -221,6 +234,11 @@ namespace MazeWebServer.Controllers
             base.Dispose(disposing);
         }
 
+        /// <summary>
+        /// Users the exists.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         private bool UserExists(string id)
         {
             return db.Users.Count(e => e.Username == id) > 0;
